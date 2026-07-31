@@ -1,0 +1,2141 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portafolio AFP · Acciones Locales vs. Internacionales</title>
+<style>
+  :root{
+    --paper:#E3E3E1;
+    --paper-2:#D6D6D3;
+    --ink:#1A1A1A;
+    --ink-soft:#6E6E67;
+    --rule:#BFBFBB;
+    --local:#1C3D5E;
+    --local-soft:#AEC2D3;
+    --intl:#963826;
+    --intl-soft:#D9B6AC;
+    --otro:#8A8A83;
+    --paper-card:#EDEDEB;
+    --compra:#2E7D46;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Trebuchet MS',sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:1180px;margin:0 auto;padding:0 28px;}
+  .num{font-family:'Trebuchet MS',sans-serif;font-variant-numeric:tabular-nums;}
+
+  header{border-bottom:1px solid var(--rule);padding:38px 0 26px;}
+  .eyebrow{
+    font-family:'Trebuchet MS',sans-serif;font-size:12px;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--ink-soft);margin-bottom:10px;
+  }
+  h1{
+    font-family:'Trebuchet MS',sans-serif;font-optical-sizing:auto;font-weight:500;
+    font-size:clamp(30px,4.2vw,46px);line-height:1.05;margin:0 0 8px;letter-spacing:-.01em;
+  }
+  .sub{color:var(--ink-soft);font-size:15px;max-width:640px;line-height:1.5;}
+  .corte-badge{
+    display:inline-flex;align-items:center;gap:8px;margin-top:18px;
+    font-family:'Trebuchet MS',sans-serif;font-size:13px;color:var(--ink);
+    background:var(--paper-card);border:1px solid var(--rule);padding:6px 12px;border-radius:3px;
+  }
+  .corte-badge .dot{width:7px;height:7px;border-radius:50%;background:var(--intl);}
+
+  .hero{padding:40px 0 8px;}
+
+  .pie-grid{
+    display:grid;grid-template-columns:auto 1fr;gap:40px;align-items:center;
+    margin-top:28px;
+  }
+  @media (max-width:640px){ .pie-grid{grid-template-columns:1fr;justify-items:center;} }
+  .pie-legend{display:flex;flex-direction:column;gap:16px;}
+  .pie-legend-item{display:flex;align-items:baseline;gap:12px;}
+  .pie-legend-swatch{width:14px;height:14px;border-radius:3px;flex-shrink:0;margin-top:3px;}
+  .pie-legend-text .name{font-family:'Trebuchet MS',sans-serif;font-size:17px;color:var(--ink);}
+  .pie-legend-text .figures{
+    font-family:'Trebuchet MS',sans-serif;font-size:13px;color:var(--ink-soft);margin-top:2px;
+  }
+  .pie-legend-text .figures b{color:var(--ink);font-weight:600;}
+
+  .categoria-glosario{
+    margin-top:32px;padding-top:24px;border-top:1px solid var(--rule);
+    display:grid;grid-template-columns:repeat(auto-fit, minmax(220px,1fr));gap:20px;
+  }
+  .categoria-glosario-item .codigo{
+    font-family:'Trebuchet MS',sans-serif;font-size:10.5px;letter-spacing:.04em;
+    color:var(--ink-soft);text-transform:uppercase;margin-bottom:3px;
+  }
+  .categoria-glosario-item .nombre{font-family:'Trebuchet MS',sans-serif;font-size:15px;color:var(--ink);margin-bottom:5px;}
+  .categoria-glosario-item .desc{font-size:12.5px;color:var(--ink-soft);line-height:1.5;}
+  .hero-total{
+    padding-bottom:30px;margin-bottom:30px;border-bottom:1px solid var(--rule);
+  }
+  .hero-total .label{
+    font-family:'Trebuchet MS',sans-serif;font-size:12px;letter-spacing:.1em;
+    text-transform:uppercase;color:var(--ink-soft);margin-bottom:8px;
+  }
+  .hero-total-value{
+    font-family:'Trebuchet MS',sans-serif;font-weight:500;color:var(--intl);
+    font-size:clamp(52px,9vw,88px);line-height:1;letter-spacing:-.01em;
+  }
+  .hero-total-sub{color:var(--ink-soft);font-size:14px;margin-top:10px;}
+  .hero-total-sub b{color:var(--ink);}
+  .hero-figure-pct{
+    font-family:'Trebuchet MS',sans-serif;font-size:13px;color:var(--ink-soft);margin-top:4px;
+  }
+  .hero-figure-pct b{color:var(--ink);}
+  .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:44px;align-items:end;}
+  @media (max-width:840px){ .hero-grid{grid-template-columns:1fr;gap:28px;} }
+  .hero-figure .label{
+    font-family:'Trebuchet MS',sans-serif;font-size:12px;letter-spacing:.1em;
+    text-transform:uppercase;color:var(--ink-soft);margin-bottom:6px;
+  }
+  .hero-figure .value{font-family:'Trebuchet MS',sans-serif;font-weight:500;font-size:clamp(34px,5vw,54px);line-height:1;}
+  .hero-figure .value .unit{font-size:.4em;color:var(--ink-soft);margin-left:8px;}
+  .hero-total-value .unit{font-size:.35em;color:var(--ink-soft);margin-left:10px;font-family:'Trebuchet MS',sans-serif;}
+  .unit-usd{font-size:.32em;color:var(--ink-soft);font-weight:400;}
+
+  .moneda-toggle{display:flex;border:1px solid var(--rule);border-radius:3px;overflow:hidden;width:fit-content;}
+  .moneda-btn{
+    font-family:'Trebuchet MS',sans-serif;font-size:13px;font-weight:600;
+    padding:9px 16px;border:none;background:#fff;color:var(--ink-soft);cursor:pointer;
+  }
+  .moneda-btn + .moneda-btn{border-left:1px solid var(--rule);}
+  .moneda-btn.activo{background:var(--local);color:#fff;}
+
+  .ledger-bar{height:34px;display:flex;border-radius:3px;overflow:hidden;border:1px solid var(--rule);margin:16px 0 10px;}
+  .ledger-bar div{height:100%;}
+  .seg-local{background:var(--local);}
+  .seg-intl{background:var(--intl);}
+  .seg-otro{background:var(--otro);}
+  .ledger-legend{display:flex;gap:22px;flex-wrap:wrap;font-size:13px;color:var(--ink-soft);}
+  .ledger-legend span{display:inline-flex;align-items:center;gap:7px;}
+  .swatch{width:10px;height:10px;border-radius:2px;display:inline-block;}
+
+  .section{padding:52px 0 6px;border-top:1px solid var(--rule);}
+  .section-head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:22px;gap:18px;flex-wrap:wrap;}
+  .section-head h2{font-family:'Trebuchet MS',sans-serif;font-weight:500;font-size:24px;margin:0;}
+  .section-head p{color:var(--ink-soft);font-size:13.5px;margin:4px 0 0;max-width:520px;}
+
+  .card{background:var(--paper-card);border:1px solid var(--rule);border-radius:4px;padding:22px 24px;}
+  .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+  @media (max-width:840px){ .grid-2{grid-template-columns:1fr;} }
+
+  .afp-row{
+    display:grid;grid-template-columns:150px 1fr 190px;align-items:center;gap:18px;
+    padding:14px 0;border-bottom:1px solid var(--rule);
+  }
+  .afp-row:last-child{border-bottom:none;}
+  .afp-name{font-family:'Trebuchet MS',sans-serif;font-size:16px;}
+  .afp-mini-bar{height:20px;display:flex;border-radius:2px;overflow:hidden;border:1px solid var(--rule);}
+  .afp-pcts{font-family:'Trebuchet MS',sans-serif;font-size:12.5px;text-align:right;color:var(--ink-soft);}
+  .afp-pcts b{color:var(--ink);font-weight:600;}
+
+  table{width:100%;border-collapse:collapse;font-size:13px;}
+  thead th{
+    text-align:right;font-family:'Trebuchet MS',sans-serif;font-weight:500;font-size:11px;
+    letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft);
+    padding:8px 10px;border-bottom:1px solid var(--ink);
+  }
+  thead th:first-child, thead th:nth-child(2){text-align:left;}
+  tbody td{padding:9px 10px;text-align:right;border-bottom:1px solid var(--rule);}
+  tbody td:first-child, tbody td:nth-child(2){text-align:left;}
+  tbody tr:hover{background:var(--paper-2);}
+  .pct-cell{font-weight:600;}
+
+  footer{padding:40px 0 60px;color:var(--ink-soft);font-size:12.5px;border-top:1px solid var(--rule);margin-top:50px;}
+  footer a{color:var(--ink);}
+
+  .chart-title{
+    font-family:'Trebuchet MS',sans-serif;font-size:11px;letter-spacing:.06em;
+    text-transform:uppercase;color:var(--ink-soft);margin-bottom:14px;
+  }
+  .bars-chart{display:flex;flex-direction:column;gap:14px;}
+  .bars-row{display:grid;grid-template-columns:118px 1fr;align-items:center;gap:12px;}
+  .bars-row .cat{font-size:12.5px;color:var(--ink-soft);}
+  .bars-track{position:relative;height:22px;background:transparent;}
+  .bars-track-outer{position:relative;height:20px;}
+  .bars-seg{position:absolute;top:0;left:0;height:100%;border-radius:2px;}
+  .bars-value-label{
+    position:absolute;top:50%;transform:translateY(-50%);
+    margin-left:8px;white-space:nowrap;
+    font-family:'Trebuchet MS',sans-serif;font-size:11px;color:var(--ink);font-weight:500;
+  }
+  .bars-legend{display:flex;gap:18px;font-size:12px;color:var(--ink-soft);margin-top:6px;}
+  .bars-legend span{display:inline-flex;align-items:center;gap:6px;}
+
+  .line-chart-wrap{width:100%;overflow-x:auto;}
+  .line-chart-legend{display:flex;gap:18px;font-size:12px;color:var(--ink-soft);margin-top:10px;}
+  .line-chart-legend span{display:inline-flex;align-items:center;gap:6px;}
+
+  /* ---------- explorador (pestañas + filtros) ---------- */
+  .tabs-row{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:12px;border-bottom:1px solid var(--rule);margin-bottom:20px;}
+
+  .promedios-grid{display:grid;grid-template-columns:repeat(auto-fit, minmax(160px,1fr));gap:16px;}
+  .promedio-item{padding:14px 16px;background:var(--paper-2);border-radius:3px;}
+  .promedio-item .label{
+    font-family:'Trebuchet MS',sans-serif;font-size:11px;letter-spacing:.04em;text-transform:uppercase;
+    color:var(--ink-soft);margin-bottom:8px;
+  }
+  .promedio-item .cifra{font-family:'Trebuchet MS',sans-serif;font-weight:700;font-size:22px;color:var(--ink);line-height:1.15;}
+  .promedio-item .desglose{font-size:11.5px;color:var(--ink-soft);margin-top:6px;}
+  .promedio-item .desglose b{color:var(--local);}
+  .promedio-item .desglose b.i{color:var(--intl);}
+  .tabs{display:flex;gap:6px;margin-bottom:0;border-bottom:none;}
+  .tab-btn{
+    font-family:'Trebuchet MS',sans-serif;font-size:12.5px;letter-spacing:.03em;
+    background:none;border:none;padding:10px 4px;margin-right:18px;color:var(--ink-soft);
+    cursor:pointer;border-bottom:2px solid transparent;
+  }
+  .tab-btn.active{color:var(--ink);border-bottom-color:var(--intl);}
+  .filter-row{margin-bottom:18px;}
+  .filter-row-2{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  .filter-row-3{display:grid;grid-template-columns:1fr 1.4fr 1fr;gap:16px;}
+  .filter-row-4{display:grid;grid-template-columns:repeat(auto-fit, minmax(175px,1fr));gap:16px;align-items:end;}
+  .campo-ancho{grid-column:span 2;min-width:250px;}
+  @media (max-width:600px){ .campo-ancho{grid-column:span 1;min-width:0;} }
+  @media (max-width:600px){ .filter-row-2, .filter-row-3{grid-template-columns:1fr;} }
+
+  .matriz-table{border-collapse:collapse;font-size:12.5px;white-space:nowrap;}
+  .matriz-table th, .matriz-table td{padding:7px 10px;border-bottom:1px solid var(--rule);border-right:1px solid var(--rule);text-align:right;}
+  .matriz-table thead th{
+    font-family:'Trebuchet MS',sans-serif;font-weight:500;font-size:10.5px;letter-spacing:.03em;
+    color:var(--ink-soft);border-bottom:1px solid var(--ink);vertical-align:bottom;
+  }
+  .matriz-afp-col{
+    position:sticky;left:0;background:var(--paper-card);text-align:left !important;
+    font-family:'Trebuchet MS',sans-serif;font-size:14px;color:var(--ink);z-index:1;
+  }
+  .matriz-table td.matriz-afp-col{background:var(--paper-card);}
+  .matriz-table tbody tr:nth-child(even) td:not(.matriz-afp-col){background:rgba(0,0,0,0.015);}
+  .cell-pos{color:var(--compra);font-weight:600;background:rgba(46,125,70,0.08);}
+  .cell-neg{color:#963826;font-weight:600;background:rgba(176,65,62,0.07);}
+  .cell-zero{color:var(--rule);}
+  .filter-row label{
+    display:block;font-family:'Trebuchet MS',sans-serif;font-size:11px;letter-spacing:.06em;
+    text-transform:uppercase;color:var(--ink-soft);margin-bottom:6px;
+  }
+  select{
+    width:100%;padding:10px 12px;font-family:'Trebuchet MS',sans-serif;font-size:14px;
+    color:var(--ink);background:#fff;border:1px solid var(--rule);border-radius:3px;
+    appearance:none;-webkit-appearance:none;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='6'><path d='M0 0l5 6 5-6z' fill='%234B5A6E'/></svg>");
+    background-repeat:no-repeat;background-position:right 12px center;
+  }
+  .filter-summary{
+    font-family:'Trebuchet MS',sans-serif;font-size:13px;color:var(--ink-soft);
+    margin-bottom:14px;padding:10px 12px;background:var(--paper-2);border-radius:3px;
+  }
+  .filter-summary b{color:var(--ink);}
+  .empty-state{color:var(--ink-soft);font-size:13px;padding:16px 0;}
+
+  .btn-excel{
+    font-family:'Trebuchet MS',sans-serif;font-size:12px;
+    color:var(--local);background:#fff;border:1px solid var(--local);
+    border-radius:3px;padding:6px 12px;cursor:pointer;margin-bottom:10px;
+    display:inline-flex;align-items:center;gap:6px;
+  }
+  .btn-excel:hover{background:var(--local);color:#fff;}
+  .btn-excel-sm{font-size:11px;padding:3px 9px;margin-bottom:0;white-space:nowrap;}
+  .ranking-col-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;gap:10px;}
+
+  .afp-checks{display:flex;flex-wrap:wrap;gap:10px;}  .afp-checks-row{display:flex;flex-wrap:wrap;gap:14px;align-items:center;}
+  .afp-checks-acciones{display:flex;gap:8px;}
+  .afp-check{
+    display:inline-flex;align-items:center;gap:8px;cursor:pointer;
+    padding:9px 16px;border:1px solid var(--rule);border-radius:3px;
+    background:#fff;font-size:13.5px;font-weight:600;color:var(--ink);
+    transition:background .12s, color .12s;
+  }
+  .afp-check:hover{opacity:.88;}
+  .afp-check input{width:15px;height:15px;flex-shrink:0;accent-color:#fff;}
+
+  .nemo-dropdown-wrap{position:relative;max-width:480px;}  .nemo-dropdown-btn{
+    width:100%;display:flex;justify-content:space-between;align-items:center;
+    padding:10px 14px;font-family:'Trebuchet MS',sans-serif;font-size:13.5px;
+    color:var(--ink);background:#fff;border:1px solid var(--rule);border-radius:3px;
+    cursor:pointer;text-align:left;
+  }
+  .nemo-dropdown-btn:hover{border-color:var(--local);}
+  .nemo-dropdown-arrow{color:var(--ink-soft);margin-left:10px;}
+  .nemo-dropdown-panel{
+    position:absolute;top:calc(100% + 4px);left:0;right:0;z-index:20;
+    background:#fff;border:1px solid var(--rule);border-radius:4px;
+    box-shadow:0 8px 24px rgba(0,0,0,0.12);padding:10px;
+  }
+  .nemo-search-input{
+    width:100%;padding:9px 12px;font-family:'Trebuchet MS',sans-serif;font-size:13.5px;
+    color:var(--ink);background:var(--paper-2);border:1px solid var(--rule);border-radius:3px;
+    margin-bottom:8px;
+  }
+  .nemo-checklist{max-height:260px;overflow-y:auto;border-top:1px solid var(--rule);}
+  .nemo-check-item{
+    display:flex;align-items:center;gap:9px;padding:7px 6px;font-size:13px;
+    color:var(--ink);cursor:pointer;border-bottom:1px solid var(--paper-2);
+  }
+  .nemo-check-item:hover{background:var(--paper-2);}
+  .nemo-check-item input{accent-color:var(--local);width:15px;height:15px;flex-shrink:0;}
+  .nemo-item-codigo{font-weight:600;}
+  .nemo-check-item .nemo-item-nombre{color:var(--ink-soft);font-size:11.5px;margin-left:auto;padding-left:10px;text-align:right;}
+  .nemo-dropdown-footer{display:flex;justify-content:space-between;align-items:center;padding-top:10px;}
+  .btn-limpiar, .btn-cerrar{
+    font-family:'Trebuchet MS',sans-serif;font-size:12.5px;
+    border-radius:3px;padding:6px 14px;cursor:pointer;
+  }
+  .btn-limpiar{color:var(--intl);background:none;border:1px solid var(--intl);}
+  .btn-limpiar:hover{background:var(--intl);color:#fff;}
+  .btn-cerrar{color:#fff;background:var(--local);border:1px solid var(--local);}
+  .btn-cerrar:hover{opacity:0.88;}
+
+  .estado-carga{
+    padding:70px 0 90px;text-align:center;color:var(--ink-soft);
+  }
+  .carga-spinner{
+    width:34px;height:34px;margin:0 auto 20px;
+    border:3px solid var(--rule);border-top-color:var(--local);
+    border-radius:50%;animation:girar .9s linear infinite;
+  }
+  @keyframes girar{ to{ transform:rotate(360deg); } }
+  .carga-texto{font-size:15px;color:var(--ink);margin-bottom:6px;}
+  .carga-nota{font-size:12.5px;color:var(--ink-soft);}
+  .carga-error{
+    max-width:560px;margin:0 auto;padding:18px 20px;text-align:left;
+    background:#fff;border:1px solid var(--intl);border-radius:4px;
+    color:var(--ink);font-size:13.5px;line-height:1.55;
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header>
+    <div class="eyebrow">Fondos de Pensiones Obligatorias · Colombia</div>
+    <h1>Exposición accionaria del portafolio</h1>
+    <p class="sub">Seguimiento mensual de la participación en acciones locales e internacionales dentro del portafolio de inversión de las cuatro AFP, con base en el Formato 351 (Superintendencia Financiera).</p>
+    <div class="corte-badge"><span class="dot"></span> Corte más reciente: <span id="fecha-corte-badge"></span></div>
+  </header>
+
+  <div id="estado-carga" class="estado-carga">
+    <div class="carga-spinner"></div>
+    <div class="carga-texto">Cargando datos del portafolio...</div>
+    <div class="carga-nota">42 meses de historico &middot; puede tomar unos segundos</div>
+  </div>
+
+  <div id="dashboard-contenido" style="display:none;">
+
+  <section class="section" style="padding-top:36px;border-top:none;">
+    <div class="hero-total" style="border-bottom:none;padding-bottom:0;margin-bottom:0;">
+      <div class="label">Total portafolio del sistema (4 AFP)</div>
+      <div class="hero-total-value" id="total-portafolio-cop">—</div>
+      <div class="hero-total-sub" id="total-portafolio-sub"></div>
+    </div>
+
+    <div class="pie-grid">
+      <div class="pie-wrap" id="pie-composicion"></div>
+      <div class="pie-legend" id="pie-composicion-legend"></div>
+    </div>
+  </section>
+
+  <section class="hero">
+    <div class="hero-total">
+      <div class="label">Total sistema — participación en renta variable (acciones)</div>
+      <div class="hero-total-value" id="hero-total-pct">—</div>
+      <div class="hero-total-sub" id="hero-total-sub"></div>
+    </div>
+
+    <div class="hero-grid">
+      <div>
+        <div class="hero-figure">
+          <div class="label">Acciones locales</div>
+          <div class="value" id="hero-local">—<span class="unit">billones COP</span></div>
+          <div class="hero-figure-pct" id="hero-local-pct"></div>
+        </div>
+      </div>
+      <div>
+        <div class="hero-figure">
+          <div class="label">Acciones internacionales</div>
+          <div class="value" id="hero-intl">—<span class="unit">billones COP</span></div>
+          <div class="hero-figure-pct" id="hero-intl-pct"></div>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:30px;">
+      <div class="label" style="font-family:'Trebuchet MS',sans-serif;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);">Composición del portafolio total</div>
+      <div class="ledger-bar" id="hero-ledger"></div>
+      <div class="ledger-legend">
+        <span><i class="swatch" style="background:var(--local)"></i>Acciones locales</span>
+        <span><i class="swatch" style="background:var(--intl)"></i>Acciones internacionales</span>
+        <span><i class="swatch" style="background:var(--otro)"></i>Otros activos (renta fija, depósitos, etc.)</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-head">
+      <div>
+        <h2>Detalle del portafolio internacional</h2>
+        <p>De los <span id="intl-total-texto">—</span> en renta variable internacional, así se reparte entre los cuatro tipos de instrumento que reporta la Superintendencia.</p>
+      </div>
+    </div>
+    <div class="card">
+      <div class="pie-grid">
+        <div class="pie-wrap" id="pie-internacional"></div>
+        <div class="pie-legend" id="pie-internacional-legend"></div>
+      </div>
+      <div class="categoria-glosario" id="categoria-glosario"></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-head">
+      <div>
+        <h2>Por administradora</h2>
+        <p>Participación de acciones locales e internacionales sobre el portafolio total de cada AFP.</p>
+      </div>
+    </div>
+    <div class="card" id="afp-rows"></div>
+    <div class="card" style="margin-top:16px;">
+      <div class="chart-title">Promedios de participación en renta variable (entre las 4 AFP)</div>
+      <div class="promedios-grid" id="promedios-participacion"></div>
+    </div>
+    <div class="card" style="margin-top:16px;">
+      <div class="chart-title" style="color:var(--local);">Promedios de participación — solo renta variable local (entre las 4 AFP)</div>
+      <div class="promedios-grid" id="promedios-local"></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-head">
+      <div>
+        <h2>Por perfil de riesgo</h2>
+        <p>Los fondos de mayor riesgo suelen concentrar más exposición accionaria, especialmente internacional.</p>
+      </div>
+    </div>
+    <div class="grid-2">
+      <div class="card">
+        <div class="chart-title">Valor en billones COP</div>
+        <div class="bars-chart" id="chart-perfil-abs"></div>
+      </div>
+      <div class="card">
+        <div class="chart-title">% del portafolio del perfil</div>
+        <div class="bars-chart" id="chart-perfil-pct"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-head">
+      <div>
+        <h2>Evolución mensual</h2>
+        <p>Este panel se irá completando a medida que se agreguen los cortes mensuales del portafolio.</p>
+      </div>
+    </div>
+    <div class="card">
+      <div class="line-chart-wrap" id="chart-evolucion"></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-head">
+      <div>
+        <h2>Explorar tenencias</h2>
+        <p>Busca un nemotécnico para ver cuánto tiene cada AFP (todos los perfiles sumados), o elige una AFP para ver todo su portafolio accionario.</p>
+      </div>
+      <div class="corte-badge"><span class="dot"></span> Datos a corte de <span id="explorar-corte"></span></div>
+    </div>
+    <div class="card">
+      <div class="tabgroup">
+      <div class="tabs-row">
+        <div class="tabs">
+          <button class="tab-btn active" data-tab="rv-local">Renta variable local</button>
+          <button class="tab-btn" data-tab="rv-intl">Renta variable internacional</button>
+          <button class="tab-btn" data-tab="por-afp">Por AFP</button>
+        </div>
+        <div class="moneda-toggle" id="explorar-moneda-toggle">
+          <button type="button" class="moneda-btn activo" data-moneda="COP">COP</button>
+          <button type="button" class="moneda-btn" data-moneda="USD">USD</button>
+        </div>
+      </div>
+
+      <div class="tab-panel" data-panel="rv-local">
+        <div class="filter-row">
+          <label for="select-nemo-local">Nemotécnico</label>
+          <select id="select-nemo-local"></select>
+        </div>
+        <div id="resumen-rv-local" class="filter-summary"></div>
+        <div style="overflow-x:auto;">
+          <table id="tabla-rv-local">
+            <thead><tr><th>AFP</th><th>Nº acciones</th><th>Valor de mercado</th><th>% de la compañía</th></tr></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+        <div class="empty-state" style="margin-top:10px;">
+          % de la compañía = acciones que tiene la AFP ÷ acciones en circulación totales del emisor (corte más reciente, fuente Bloomberg). La norma colombiana limita al 10% la participación de una AFP por emisor.
+        </div>
+      </div>
+
+      <div class="tab-panel" data-panel="rv-intl" style="display:none;">
+        <div class="filter-row">
+          <label for="select-nemo-intl">Nemotécnico / instrumento</label>
+          <select id="select-nemo-intl"></select>
+        </div>
+        <div id="resumen-rv-intl" class="filter-summary"></div>
+        <div style="overflow-x:auto;">
+          <table id="tabla-rv-intl">
+            <thead><tr><th>AFP</th><th>Nº acciones / unidades</th><th>Valor de mercado</th></tr></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="tab-panel" data-panel="por-afp" style="display:none;">
+        <div class="filter-row filter-row-2">
+          <div>
+            <label for="select-afp">AFP</label>
+            <select id="select-afp"></select>
+          </div>
+          <div>
+            <label for="select-categoria-afp">Categoría</label>
+            <select id="select-categoria-afp">
+              <option value="todas">Todas</option>
+              <option value="Renta variable local">Solo local</option>
+              <option value="Renta variable internacional">Solo internacional</option>
+            </select>
+          </div>
+        </div>
+        <div id="resumen-portafolio" class="filter-summary"></div>
+        <div style="overflow-x:auto;">
+          <table id="tabla-por-portafolio">
+            <thead>
+              <tr><th>Nemotécnico</th><th id="th-emisor">Emisor / instrumento</th><th>Categoría</th><th>Nº acciones</th><th>Valor de mercado</th><th>% del portafolio</th><th id="th-pct-compania" style="display:none;">% de la compañía</th></tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-head">
+      <div>
+        <h2>Movimiento mensual</h2>
+        <p>Compra o venta neta mes a mes: sigue una acción en el tiempo, o revisa qué se compró y vendió más en un mes específico.</p>
+      </div>
+    </div>
+    <div class="card">
+      <div class="tabgroup">
+      <div class="tabs">
+        <button class="tab-btn active" data-tab="mov-serie">Serie por acción</button>
+        <button class="tab-btn" data-tab="mov-ranking">Ranking</button>
+      </div>
+
+      <div class="tab-panel" data-panel="mov-serie">
+        <div class="filter-row filter-row-3">
+          <div>
+            <label for="select-mov-categoria">Categoría</label>
+            <select id="select-mov-categoria">
+              <option value="Renta variable local">Local</option>
+              <option value="Renta variable internacional">Internacional</option>
+            </select>
+          </div>
+          <div>
+            <label for="select-mov-nemo">Nemotécnico</label>
+            <select id="select-mov-nemo"></select>
+          </div>
+          <div>
+            <label for="select-mov-medida">Medir el movimiento en</label>
+            <select id="select-mov-medida">
+              <option value="acciones">Nº de acciones</option>
+              <option value="valor">Valor de mercado (COP)</option>
+            </select>
+          </div>
+        </div>
+        <div class="filter-row">
+          <label>AFP a comparar (marca una o varias)</label>
+          <div class="afp-checks-row">
+            <div id="mov-afp-checks" class="afp-checks"></div>
+            <div class="afp-checks-acciones">
+              <button type="button" id="btn-mov-afp-todas" class="btn-cerrar">Todas</button>
+              <button type="button" id="btn-mov-afp-ninguna" class="btn-limpiar">Ninguna</button>
+            </div>
+          </div>
+        </div>
+        <div id="mov-serie-insuficiente" class="empty-state" style="display:none;"></div>
+        <div id="mov-serie-content">
+          <div id="resumen-mov-serie" class="filter-summary"></div>
+          <div class="line-chart-wrap" id="chart-mov-serie"></div>
+          <div style="overflow-x:auto;margin-top:18px;">
+            <table id="tabla-mov-serie">
+              <thead><tr id="mov-serie-thead-row"><th>Corte</th></tr></thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="tab-panel" data-panel="mov-ranking" style="display:none;">
+        <div class="filter-row filter-row-4">
+          <div class="campo-ancho">
+            <label for="select-ranking-horizonte">Horizonte</label>
+            <select id="select-ranking-horizonte">
+              <option value="1m">Último mes</option>
+              <option value="mes-especifico">Mes específico</option>
+              <option value="3m">Últimos 3 meses</option>
+              <option value="6m">Últimos 6 meses</option>
+              <option value="12m">Último año (12 meses)</option>
+              <option value="rango">Rango personalizado</option>
+            </select>
+          </div>
+          <div id="ranking-mes-especifico-wrap" style="display:none;">
+            <label for="select-mov-mes">Mes</label>
+            <select id="select-mov-mes"></select>
+          </div>
+          <div id="ranking-rango-wrap" class="filter-row-2" style="display:none;">
+            <div>
+              <label for="select-ranking-desde">Desde</label>
+              <select id="select-ranking-desde"></select>
+            </div>
+            <div>
+              <label for="select-ranking-hasta">Hasta</label>
+              <select id="select-ranking-hasta"></select>
+            </div>
+          </div>
+          <div>
+            <label for="select-mov-afp-ranking">AFP</label>
+            <select id="select-mov-afp-ranking">
+              <option value="todas">Sistema (todas)</option>
+            </select>
+          </div>
+          <div>
+            <label for="select-mov-ranking-categoria">Categoría</label>
+            <select id="select-mov-ranking-categoria">
+              <option value="todas">Todas</option>
+              <option value="Renta variable local">Solo local</option>
+              <option value="Renta variable internacional">Solo internacional</option>
+            </select>
+          </div>
+          <div>
+            <label>Moneda del monto</label>
+            <div class="moneda-toggle" id="ranking-moneda-toggle">
+              <button type="button" class="moneda-btn activo" data-moneda="COP">COP</button>
+              <button type="button" class="moneda-btn" data-moneda="USD">USD</button>
+            </div>
+          </div>
+        </div>
+        <div id="mov-ranking-insuficiente" class="empty-state" style="display:none;">
+          Se necesitan al menos dos cortes mensuales para calcular compras/ventas. Por ahora solo hay uno cargado.
+        </div>
+        <div id="resumen-mov-ranking" class="filter-summary"></div>
+        <div id="mov-ranking-content">
+          <div class="grid-2">
+            <div>
+              <div class="ranking-col-header">
+                <div class="chart-title" style="color:var(--compra);margin-bottom:0;">Top compras (mayor incremento)</div>
+                <div id="btn-excel-compras-slot"></div>
+              </div>
+              <table id="tabla-top-compras">
+                <thead><tr><th>Nemotécnico</th><th>Categoría</th><th>Δ acciones</th><th id="th-monto-compras">Monto aprox. (compra/venta) — COP</th></tr></thead>
+                <tbody></tbody>
+              </table>
+            </div>
+            <div>
+              <div class="ranking-col-header">
+                <div class="chart-title" style="color:#963826;margin-bottom:0;">Top ventas (mayor caída)</div>
+                <div id="btn-excel-ventas-slot"></div>
+              </div>
+              <table id="tabla-top-ventas">
+                <thead><tr><th>Nemotécnico</th><th>Categoría</th><th>Δ acciones</th><th id="th-monto-ventas">Monto aprox. (compra/venta) — COP</th></tr></thead>
+                <tbody></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-head">
+      <div>
+        <h2>Matriz de movimiento neto</h2>
+        <p>Compara todas las AFP a la vez: cada fila es una AFP, cada columna una acción. El número es el cambio neto en cantidad de acciones durante el horizonte elegido.</p>
+      </div>
+    </div>
+    <div class="card">
+      <div class="filter-row">
+        <label>Filtrar por nemotécnico local específico (opcional — puedes elegir varios, ej. CIBEST y PFCIBEST)</label>
+        <div class="nemo-dropdown-wrap" id="nemo-dropdown-wrap">
+          <button type="button" id="btn-nemo-dropdown" class="nemo-dropdown-btn">
+            <span id="btn-nemo-dropdown-texto">Ninguno seleccionado — se usan los filtros de abajo</span>
+            <span class="nemo-dropdown-arrow">▾</span>
+          </button>
+          <div id="nemo-dropdown-panel" class="nemo-dropdown-panel" style="display:none;">
+            <input type="text" id="input-matriz-nemo-buscar" placeholder="Buscar nemotécnico..." class="nemo-search-input">
+            <div id="nemo-checklist" class="nemo-checklist"></div>
+            <div class="nemo-dropdown-footer">
+              <button type="button" id="btn-matriz-nemo-limpiar" class="btn-limpiar">Limpiar selección</button>
+              <button type="button" id="btn-nemo-dropdown-cerrar" class="btn-cerrar">Listo</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="filter-row filter-row-4">
+        <div class="campo-ancho">
+          <label for="select-matriz-horizonte">Horizonte</label>
+          <select id="select-matriz-horizonte">
+            <option value="1m">Último mes</option>
+            <option value="mes-especifico">Mes específico</option>
+            <option value="3m">Último trimestre (3 meses)</option>
+            <option value="6m">Último semestre (6 meses)</option>
+            <option value="12m">Último año (12 meses)</option>
+            <option value="rango">Rango personalizado</option>
+          </select>
+        </div>
+        <div id="matriz-mes-especifico-wrap" style="display:none;">
+          <label for="select-matriz-mes">Mes</label>
+          <select id="select-matriz-mes"></select>
+        </div>
+        <div id="matriz-rango-wrap" class="filter-row-2" style="display:none;">
+          <div>
+            <label for="select-matriz-desde">Desde</label>
+            <select id="select-matriz-desde"></select>
+          </div>
+          <div>
+            <label for="select-matriz-hasta">Hasta</label>
+            <select id="select-matriz-hasta"></select>
+          </div>
+        </div>
+        <div>
+          <label for="select-matriz-categoria">Categoría</label>
+          <select id="select-matriz-categoria">
+            <option value="todas">Todas</option>
+            <option value="Renta variable local">Solo local</option>
+            <option value="Renta variable internacional">Solo internacional</option>
+          </select>
+        </div>
+        <div>
+          <label for="select-matriz-categoria-fina">Categoría fina</label>
+          <select id="select-matriz-categoria-fina">
+            <option value="todas">Todas</option>
+          </select>
+        </div>
+        <div>
+          <label for="select-matriz-sector">Sector</label>
+          <select id="select-matriz-sector">
+            <option value="todos">Todos</option>
+          </select>
+        </div>
+        <div>
+          <label for="select-matriz-colcap">Índice</label>
+          <select id="select-matriz-colcap">
+            <option value="todas">Todas las acciones</option>
+            <option value="colcap">Solo COLCAP</option>
+          </select>
+        </div>
+        <div>
+          <label for="select-matriz-top">Mostrar</label>
+          <select id="select-matriz-top">
+            <option value="20">Top 20 más activas</option>
+            <option value="50">Top 50 más activas</option>
+            <option value="9999">Todas las que tuvieron movimiento</option>
+          </select>
+        </div>
+      </div>
+      <div id="matriz-categoria-fina-nota" class="empty-state" style="display:none;"></div>
+      <div id="matriz-colcap-nota" class="empty-state" style="display:none;">
+        El índice COLCAP agrupa las ~20 acciones más líquidas de la Bolsa de Colombia — este filtro solo aplica a renta variable local.
+      </div>
+      <div id="resumen-matriz" class="filter-summary"></div>
+      <div style="overflow-x:auto;">
+        <table id="tabla-matriz" class="matriz-table">
+          <thead><tr id="matriz-header-row"><th class="matriz-afp-col">AFP</th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    Fuente: Formato 351 — Superintendencia Financiera de Colombia. Clasificación de acciones locales/internacionales y agregación propia. Última actualización de datos: <span id="fecha-corte-footer"></span>.
+  </footer>
+  </div>
+</div>
+
+<script>
+/* ===================== DATOS ===================== */
+/* Este bloque se reemplaza cada mes con el historial actualizado
+   generado por procesar_portafolio.py (historial_portafolio.json) */
+function iniciarDashboard(HISTORIAL){
+
+/* ===================== UTILIDADES ===================== */
+const fmtBillones = v => (v/1e12).toLocaleString('es-CO',{maximumFractionDigits:1,minimumFractionDigits:1});
+const fmtCOP = v => '$' + Math.round(v).toLocaleString('es-CO');
+const fmtPct = v => v.toLocaleString('es-CO',{maximumFractionDigits:1,minimumFractionDigits:1}) + '%';
+
+/* "2026-06-30" -> "junio 2026" */
+const MESES_LARGOS = ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
+function fechaLarga(fechaISO){
+  const partes = String(fechaISO).split('-');
+  return MESES_LARGOS[parseInt(partes[1],10)-1] + ' ' + partes[0];
+}
+
+/* TRM (Superintendencia Financiera) usada para normalizar todas las cifras en
+   USD del dashboard: se usa la TRM de cierre del corte más reciente para todo
+   el histórico, así todo queda en la misma base de conversión actual.
+   Se actualiza este único valor cada vez que se agrega un mes nuevo. */
+const TRM = 3443.59;
+const TRM_FECHA = 'cierre de ' + fechaLarga(HISTORIAL.snapshots[HISTORIAL.snapshots.length-1].fecha_corte);
+const fmtUSD = v => 'US$' + Math.round(v/TRM).toLocaleString('en-US');
+const fmtBillonesUSD = v => (v/TRM/1e9).toLocaleString('en-US',{maximumFractionDigits:1,minimumFractionDigits:1});
+
+/* ===================== EXPORTAR TABLAS A EXCEL ===================== */
+/* Se genera un CSV con separador ";" y BOM UTF-8: Excel en español lo abre
+   directamente con las columnas separadas y los números bien interpretados,
+   sin necesidad de librerías externas (el dashboard funciona offline). */
+function celdaACSV(texto){
+  let t = (texto || '').trim();
+  if(t === '—') t = '';
+  t = t.replace(/\u00A0/g, ' ').replace(/\s+/g, ' ');
+  t = t.replace(/^\$\s?/, '');        // quita el símbolo de peso, deja el número
+  t = t.replace(/\s*⚠\s*/g, '');      // quita el ícono de alerta
+  if(/[";\n]/.test(t)) t = '"' + t.replace(/"/g, '""') + '"';
+  return t;
+}
+
+function exportarTablaCSV(tabla, nombreArchivo){
+  if(!tabla) return;
+  const filas = [];
+  Array.from(tabla.querySelectorAll('tr')).forEach(function(tr){
+    const celdas = Array.from(tr.querySelectorAll('th, td')).filter(function(c){
+      // omite columnas ocultas para que encabezado y datos queden alineados
+      return c.style.display !== 'none';
+    });
+    if(celdas.length === 0) return;
+    // ignora filas de estado vacío
+    if(celdas.length === 1 && celdas[0].classList.contains('empty-state')) return;
+    filas.push(celdas.map(function(c){ return celdaACSV(c.textContent); }).join(';'));
+  });
+  if(filas.length === 0) return;
+
+  const contenido = '\uFEFF' + filas.join('\r\n');
+  const blob = new Blob([contenido], { type: 'text/csv;charset=utf-8;' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = nombreArchivo;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+}
+
+/* inserta un botón de descarga justo encima de la tabla indicada */
+function agregarBotonExcel(idTabla, nombreBase, opciones){
+  opciones = opciones || {};
+  const tabla = document.getElementById(idTabla);
+  if(!tabla) return;
+  const btn = document.createElement('button');
+  btn.type = 'button';
+  btn.className = opciones.slotId ? 'btn-excel btn-excel-sm' : 'btn-excel';
+  btn.innerHTML = opciones.slotId ? '&#8681; Excel' : '&#8681; Descargar Excel';
+  btn.addEventListener('click', function(){
+    const fecha = (HISTORIAL.snapshots[HISTORIAL.snapshots.length-1] || {}).fecha_corte || '';
+    exportarTablaCSV(tabla, nombreBase + '_' + fecha + '.csv');
+  });
+  const slot = opciones.slotId ? document.getElementById(opciones.slotId) : null;
+  if(slot){
+    slot.appendChild(btn);
+  } else {
+    const contenedor = tabla.parentElement;
+    contenedor.parentElement.insertBefore(btn, contenedor);
+  }
+}
+
+const COLOR_LOCAL = '#1C3D5E';
+const COLOR_INTL = '#963826';
+const COLOR_COMPRA = '#2E7D46'; // verde — exclusivo para movimiento neto positivo (compra), separado de COLOR_INTL
+const COLOR_OTRO = '#8A8A83';
+
+const PERFIL_ORDEN = ['Conservador','Moderado','Mayor Riesgo','Retiro Programado','Cesantías','Alternativo'];
+
+const ultimo = HISTORIAL.snapshots[HISTORIAL.snapshots.length - 1];
+
+document.getElementById('fecha-corte-badge').textContent = ultimo.fecha_corte;
+document.getElementById('fecha-corte-footer').textContent = ultimo.fecha_corte;
+document.getElementById('explorar-corte').textContent = fechaLarga(ultimo.fecha_corte) + ' (' + ultimo.fecha_corte + ')';
+
+/* ===================== TOTAL + TORTA DE COMPOSICIÓN GENERAL ===================== */
+const COLOR_RF = '#8A8A83';   // renta fija - gris raton
+const COLOR_RV = '#1C3D5E';   // renta variable - azul oscuro (consistente con acciones)
+const COLOR_OTROS = '#4A4A44'; // otros activos - gris oscuro
+
+const compGeneral = ultimo.composicion_general;
+
+if(compGeneral){
+  const totalGeneral = compGeneral.renta_fija + compGeneral.renta_variable + compGeneral.otros_activos;
+  document.getElementById('total-portafolio-cop').innerHTML =
+    fmtBillones(totalGeneral) + '<span class="unit">billones COP</span>'+
+    ' <span class="unit-usd">(' + fmtBillonesUSD(totalGeneral) + ' mil millones USD)</span>';
+  document.getElementById('total-portafolio-sub').innerHTML =
+    'Suma de las 4 AFP al corte <b>'+ultimo.fecha_corte+'</b> &nbsp;·&nbsp; <b>'+fmtCOP(totalGeneral)+'</b> ('+fmtUSD(totalGeneral)+')'+
+    ' &nbsp;·&nbsp; TRM '+TRM.toLocaleString('es-CO')+' ('+TRM_FECHA+')';
+
+  const segmentos = [
+    { nombre: 'Renta Fija', valor: compGeneral.renta_fija, color: COLOR_RF, nota: 'TES, bonos, CDTs, titularizaciones' },
+    { nombre: 'Renta Variable', valor: compGeneral.renta_variable, color: COLOR_RV, nota: 'acciones locales e internacionales' },
+    { nombre: 'Otros Activos', valor: compGeneral.otros_activos, color: COLOR_OTROS, nota: 'fondos de capital privado, inmobiliarios, depósitos, etc.' },
+  ];
+
+  // --- gráfica de torta en SVG puro ---
+  const size = 220, r = 100, cx = size/2, cy = size/2;
+  let anguloAcum = -90; // empezar arriba
+  const arcos = segmentos.map(function(s){
+    const frac = s.valor / totalGeneral;
+    const anguloInicio = anguloAcum;
+    const anguloFin = anguloAcum + frac * 360;
+    anguloAcum = anguloFin;
+    const toRad = function(a){ return a * Math.PI / 180; };
+    const x1 = cx + r * Math.cos(toRad(anguloInicio)), y1 = cy + r * Math.sin(toRad(anguloInicio));
+    const x2 = cx + r * Math.cos(toRad(anguloFin)), y2 = cy + r * Math.sin(toRad(anguloFin));
+    const largeArc = (anguloFin - anguloInicio) > 180 ? 1 : 0;
+    const path = 'M '+cx+' '+cy+' L '+x1.toFixed(2)+' '+y1.toFixed(2)+' A '+r+' '+r+' 0 '+largeArc+' 1 '+x2.toFixed(2)+' '+y2.toFixed(2)+' Z';
+    return '<path d="'+path+'" fill="'+s.color+'" stroke="'+ (document.body ? '#EDEDEB' : '#fff') +'" stroke-width="2"><title>'+s.nombre+': '+fmtPct(frac*100)+'</title></path>';
+  }).join('');
+
+  document.getElementById('pie-composicion').innerHTML =
+    '<svg width="'+size+'" height="'+size+'" viewBox="0 0 '+size+' '+size+'">'+arcos+
+    '<circle cx="'+cx+'" cy="'+cy+'" r="52" fill="var(--paper-card, #EDEDEB)"/>'+
+    '</svg>';
+
+  document.getElementById('pie-composicion-legend').innerHTML = segmentos.map(function(s){
+    const pct = s.valor / totalGeneral * 100;
+    return '<div class="pie-legend-item">'+
+      '<span class="pie-legend-swatch" style="background:'+s.color+'"></span>'+
+      '<div class="pie-legend-text">'+
+        '<div class="name">'+s.nombre+' — '+fmtPct(pct)+'</div>'+
+        '<div class="figures"><b>'+fmtCOP(s.valor)+'</b> &nbsp;('+fmtBillones(s.valor)+' billones COP)</div>'+
+        '<div class="figures" style="opacity:.75;">'+s.nota+'</div>'+
+      '</div>'+
+    '</div>';
+  }).join('');
+}
+
+/* ===================== DETALLE INTERNACIONAL (torta + glosario) ===================== */
+const CATEGORIA_FINA_INFO = {
+  'Acción local': {
+    codigo: 'AAEVS · AAENVS · ABEVS · ABENVS · AMEVS · AMENVS',
+    desc: 'Acciones de empresas colombianas, clasificadas por nivel de liquidez bursátil y si el emisor está vigilado por la Superintendencia Financiera.',
+  },
+  'Acción internacional': {
+    codigo: 'AEE',
+    desc: 'Acciones directas de empresas extranjeras (ej. NUAM, GeoPark).',
+  },
+  'ADR': {
+    codigo: 'CRAAAVS · CRAAANVS',
+    desc: 'Certificados que representan acciones colombianas negociadas en el exterior.',
+  },
+  'Fondo internacional (acciones)': {
+    codigo: 'PFMUIA',
+    desc: 'Fondos/mutual funds extranjeros cuyo objetivo principal es invertir en acciones (ej. fondos activos por país o región).',
+  },
+  'Fondo / ETF índice': {
+    codigo: 'FINDI',
+    desc: 'ETFs que replican índices accionarios (S&P 500, MSCI Brasil, MSCI China, sectoriales, etc.).',
+  },
+};
+const COLOR_CAT_FINA = {
+  'Acción internacional': '#1C3D5E',
+  'ADR': '#4A6E8F',
+  'Fondo internacional (acciones)': '#963826',
+  'Fondo / ETF índice': '#8A8A83',
+};
+
+const detalleIntl = (ultimo.detalle_acciones || []).filter(function(r){ return r.categoria_amplia === 'Renta variable internacional'; });
+const porCategoriaFina = {};
+detalleIntl.forEach(function(r){
+  porCategoriaFina[r.categoria_fina] = (porCategoriaFina[r.categoria_fina] || 0) + r.valor_mercado;
+});
+const totalIntlDetalle = Object.values(porCategoriaFina).reduce(function(a,b){ return a+b; }, 0);
+
+document.getElementById('intl-total-texto').textContent =
+  fmtBillones(totalIntlDetalle) + ' billones COP (' + fmtBillonesUSD(totalIntlDetalle) + ' mil millones USD)';
+
+if(totalIntlDetalle > 0){
+  const segmentosIntl = Object.keys(porCategoriaFina)
+    .sort(function(a,b){ return porCategoriaFina[b] - porCategoriaFina[a]; })
+    .map(function(cat){ return { nombre: cat, valor: porCategoriaFina[cat], color: COLOR_CAT_FINA[cat] || '#8A8A83' }; });
+
+  const size2 = 220, r2 = 100, cx2 = size2/2, cy2 = size2/2;
+  let anguloAcum2 = -90;
+  const arcos2 = segmentosIntl.map(function(s){
+    const frac = s.valor / totalIntlDetalle;
+    const a0 = anguloAcum2, a1 = anguloAcum2 + frac*360;
+    anguloAcum2 = a1;
+    const toRad = function(a){ return a*Math.PI/180; };
+    const x1 = cx2 + r2*Math.cos(toRad(a0)), y1 = cy2 + r2*Math.sin(toRad(a0));
+    const x2 = cx2 + r2*Math.cos(toRad(a1)), y2 = cy2 + r2*Math.sin(toRad(a1));
+    const largeArc = (a1-a0) > 180 ? 1 : 0;
+    const path = 'M '+cx2+' '+cy2+' L '+x1.toFixed(2)+' '+y1.toFixed(2)+' A '+r2+' '+r2+' 0 '+largeArc+' 1 '+x2.toFixed(2)+' '+y2.toFixed(2)+' Z';
+    return '<path d="'+path+'" fill="'+s.color+'" stroke="#EDEDEB" stroke-width="2"><title>'+s.nombre+': '+fmtPct(frac*100)+'</title></path>';
+  }).join('');
+
+  document.getElementById('pie-internacional').innerHTML =
+    '<svg width="'+size2+'" height="'+size2+'" viewBox="0 0 '+size2+' '+size2+'">'+arcos2+
+    '<circle cx="'+cx2+'" cy="'+cy2+'" r="52" fill="#EDEDEB"/></svg>';
+
+  document.getElementById('pie-internacional-legend').innerHTML = segmentosIntl.map(function(s){
+    const pct = s.valor/totalIntlDetalle*100;
+    return '<div class="pie-legend-item">'+
+      '<span class="pie-legend-swatch" style="background:'+s.color+'"></span>'+
+      '<div class="pie-legend-text">'+
+        '<div class="name">'+s.nombre+' — '+fmtPct(pct)+'</div>'+
+        '<div class="figures"><b>'+fmtCOP(s.valor)+'</b> &nbsp;('+fmtBillones(s.valor)+' billones COP · '+fmtBillonesUSD(s.valor)+' mil millones USD)</div>'+
+      '</div>'+
+    '</div>';
+  }).join('');
+}
+
+document.getElementById('categoria-glosario').innerHTML = Object.keys(CATEGORIA_FINA_INFO).map(function(nombre){
+  const info = CATEGORIA_FINA_INFO[nombre];
+  return '<div class="categoria-glosario-item">'+
+    '<div class="codigo">'+info.codigo+'</div>'+
+    '<div class="nombre">'+nombre+'</div>'+
+    '<div class="desc">'+info.desc+'</div>'+
+  '</div>';
+}).join('');
+
+/* ===================== HERO ===================== */
+const totalSist = ultimo.total_sistema;
+const otro = totalSist.total_portafolio - totalSist.acciones_locales - totalSist.acciones_internacionales;
+const pLocal = totalSist.acciones_locales / totalSist.total_portafolio * 100;
+const pIntl = totalSist.acciones_internacionales / totalSist.total_portafolio * 100;
+const pOtro = otro / totalSist.total_portafolio * 100;
+const pTotalAcciones = pLocal + pIntl;
+
+document.getElementById('hero-total-pct').textContent = fmtPct(pTotalAcciones);
+document.getElementById('hero-total-sub').innerHTML =
+  'De ese total, <b>'+fmtPct(pLocal)+'</b> está en acciones locales y <b>'+fmtPct(pIntl)+'</b> en acciones internacionales '+
+  '('+fmtBillones(totalSist.acciones_locales+totalSist.acciones_internacionales)+' billones COP en conjunto).';
+
+document.getElementById('hero-local').innerHTML = fmtBillones(totalSist.acciones_locales) + '<span class="unit">billones COP</span>';
+document.getElementById('hero-local-pct').innerHTML = '<b>'+fmtPct(pLocal)+'</b> del portafolio total del sistema';
+document.getElementById('hero-intl').innerHTML = fmtBillones(totalSist.acciones_internacionales) + '<span class="unit">billones COP</span>';
+document.getElementById('hero-intl-pct').innerHTML = '<b>'+fmtPct(pIntl)+'</b> del portafolio total del sistema';
+
+document.getElementById('hero-ledger').innerHTML = `
+  <div class="seg-local" style="width:${pLocal}%" title="Locales ${fmtPct(pLocal)}"></div>
+  <div class="seg-intl" style="width:${pIntl}%" title="Internacionales ${fmtPct(pIntl)}"></div>
+  <div class="seg-otro" style="width:${pOtro}%" title="Otros ${fmtPct(pOtro)}"></div>
+`;
+
+/* ===================== POR AFP ===================== */
+const afpContainer = document.getElementById('afp-rows');
+const afpsOrdenados = [...ultimo.resumen_por_afp].sort((a,b)=>b.total_portafolio - a.total_portafolio);
+
+afpContainer.innerHTML = afpsOrdenados.map(a => {
+  const l = a.acciones_locales/a.total_portafolio*100;
+  const i = a.acciones_internacionales/a.total_portafolio*100;
+  const o = 100 - l - i;
+  return `
+    <div class="afp-row">
+      <div class="afp-name">${a.afp}</div>
+      <div class="afp-mini-bar">
+        <div class="seg-local" style="width:${l}%"></div>
+        <div class="seg-intl" style="width:${i}%"></div>
+        <div class="seg-otro" style="width:${o}%"></div>
+      </div>
+      <div class="afp-pcts"><b>${fmtPct(l)}</b> local &nbsp;·&nbsp; <b>${fmtPct(i)}</b> intl.</div>
+    </div>
+  `;
+}).join('');
+
+/* --- promedios de participación: actual e históricos (12/24/36 meses) --- */
+function promedioParticipacion(listaSnapshots){
+  // promedio simple entre las 4 AFP de cada mes, luego promedio de esos meses
+  let sumaLocal = 0, sumaIntl = 0, n = 0;
+  listaSnapshots.forEach(function(snap){
+    (snap.resumen_por_afp || []).forEach(function(a){
+      if(!a.total_portafolio) return;
+      sumaLocal += a.acciones_locales / a.total_portafolio * 100;
+      sumaIntl += a.acciones_internacionales / a.total_portafolio * 100;
+      n++;
+    });
+  });
+  if(n === 0) return null;
+  return { local: sumaLocal/n, intl: sumaIntl/n, total: (sumaLocal+sumaIntl)/n };
+}
+
+function ultimosNMeses(n){
+  const todos = HISTORIAL.snapshots;
+  return todos.slice(Math.max(0, todos.length - n));
+}
+
+const promedios = [
+  { label: 'Promedio actual (' + ultimo.fecha_corte + ')', meses: [ultimo], datos: promedioParticipacion([ultimo]) },
+  { label: 'Últimos 12 meses', meses: ultimosNMeses(12), datos: promedioParticipacion(ultimosNMeses(12)) },
+  { label: 'Últimos 24 meses', meses: ultimosNMeses(24), datos: promedioParticipacion(ultimosNMeses(24)) },
+  { label: 'Últimos 36 meses', meses: ultimosNMeses(36), datos: promedioParticipacion(ultimosNMeses(36)) },
+];
+
+document.getElementById('promedios-participacion').innerHTML = promedios.map(function(p){
+  if(!p.datos) return '';
+  return '<div class="promedio-item">'+
+    '<div class="label">'+p.label+'</div>'+
+    '<div class="cifra">'+fmtPct(p.datos.total)+'</div>'+
+    '<div class="desglose"><b>'+fmtPct(p.datos.local)+'</b> local &nbsp;·&nbsp; <b class="i">'+fmtPct(p.datos.intl)+'</b> internacional</div>'+
+  '</div>';
+}).join('');
+
+/* rango (mín-máx) de participación local entre las 4 AFP, para dar contexto de dispersión */
+function rangoLocal(listaSnapshots){
+  let min = null, max = null;
+  listaSnapshots.forEach(function(snap){
+    (snap.resumen_por_afp || []).forEach(function(a){
+      if(!a.total_portafolio) return;
+      const l = a.acciones_locales / a.total_portafolio * 100;
+      if(min === null || l < min) min = l;
+      if(max === null || l > max) max = l;
+    });
+  });
+  return { min: min, max: max };
+}
+
+document.getElementById('promedios-local').innerHTML = promedios.map(function(p){
+  if(!p.datos) return '';
+  const rango = rangoLocal(p.meses);
+  return '<div class="promedio-item">'+
+    '<div class="label">'+p.label+'</div>'+
+    '<div class="cifra" style="color:var(--local);">'+fmtPct(p.datos.local)+'</div>'+
+    '<div class="desglose">rango entre AFP: <b>'+fmtPct(rango.min)+'</b> – <b>'+fmtPct(rango.max)+'</b></div>'+
+  '</div>';
+}).join('');
+
+/* ===================== POR PERFIL (agregación) ===================== */
+function agregarPorPerfil(snapshot){
+  const map = {};
+  snapshot.detalle_por_fondo.forEach(f=>{
+    if(!map[f.perfil]) map[f.perfil] = {total:0, local:0, intl:0};
+    map[f.perfil].total += f.total_portafolio;
+    map[f.perfil].local += f.acciones_locales;
+    map[f.perfil].intl += f.acciones_internacionales;
+  });
+  return map;
+}
+const perfilMap = agregarPorPerfil(ultimo);
+const perfiles = PERFIL_ORDEN.filter(p => perfilMap[p])
+  .sort(function(a,b){ return perfilMap[b].intl - perfilMap[a].intl; });
+
+/* ---- gráfica de barras horizontales agrupadas, sin librerías ---- */
+function renderBarrasAgrupadas(containerId, categorias, seriesA, seriesB, formatoValor, maxOverride){
+  const cont = document.getElementById(containerId);
+  const rawMax = maxOverride || Math.max.apply(null, seriesA.concat(seriesB));
+  const max = rawMax * 1.35; // deja espacio a la derecha para la etiqueta
+  let html = '';
+  categorias.forEach((cat, idx) => {
+    const wA = Math.max(0, (seriesA[idx]/max*100)).toFixed(2);
+    const wB = Math.max(0, (seriesB[idx]/max*100)).toFixed(2);
+    html += `
+      <div class="bars-row">
+        <div class="cat">${cat}</div>
+        <div>
+          <div class="bars-track-outer" style="margin-bottom:6px;">
+            <div class="bars-seg" style="width:${wA}%;background:${COLOR_LOCAL};"></div>
+            <span class="bars-value-label" style="left:${wA}%;">${formatoValor(seriesA[idx])}</span>
+          </div>
+          <div class="bars-track-outer">
+            <div class="bars-seg" style="width:${wB}%;background:${COLOR_INTL};"></div>
+            <span class="bars-value-label" style="left:${wB}%;">${formatoValor(seriesB[idx])}</span>
+          </div>
+        </div>
+      </div>`;
+  });
+  cont.innerHTML = html + `
+    <div class="bars-legend">
+      <span><i class="swatch" style="width:10px;height:10px;border-radius:2px;display:inline-block;background:${COLOR_LOCAL}"></i>Local</span>
+      <span><i class="swatch" style="width:10px;height:10px;border-radius:2px;display:inline-block;background:${COLOR_INTL}"></i>Internacional</span>
+    </div>`;
+}
+
+renderBarrasAgrupadas(
+  'chart-perfil-abs',
+  perfiles,
+  perfiles.map(p=>perfilMap[p].local/1e12),
+  perfiles.map(p=>perfilMap[p].intl/1e12),
+  function(v){ return v.toLocaleString('es-CO',{maximumFractionDigits:1}) + ' B'; }
+);
+
+renderBarrasAgrupadas(
+  'chart-perfil-pct',
+  perfiles,
+  perfiles.map(p=>perfilMap[p].local/perfilMap[p].total*100),
+  perfiles.map(p=>perfilMap[p].intl/perfilMap[p].total*100),
+  function(v){ return v.toLocaleString('es-CO',{maximumFractionDigits:1}) + '%'; },
+  100
+);
+
+/* ===================== EVOLUCIÓN (línea SVG) ===================== */
+const MESES_CORTOS = ['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'];
+function fechaCorta(fechaISO){
+  const [y,m] = fechaISO.split('-');
+  return MESES_CORTOS[parseInt(m,10)-1] + "'" + y.slice(2);
+}
+
+function renderLineChart(containerId, snapshots){
+  const cont = document.getElementById(containerId);
+  cont.style.overflowX = 'visible'; // el scroll lo maneja el div interno, no este contenedor
+  const axisW = 34;
+  const w = Math.max(460, snapshots.length * 34);
+  const h = 168;
+  const padL = 6, padR = 16, padT = 14, padB = 22;
+  const plotW = w - padL - padR, plotH = h - padT - padB;
+
+  const serieLocal = snapshots.map(function(s){ return s.total_sistema.acciones_locales/s.total_sistema.total_portafolio*100; });
+  const serieIntl = snapshots.map(function(s){ return s.total_sistema.acciones_internacionales/s.total_sistema.total_portafolio*100; });
+  const promedioLocal = serieLocal.reduce(function(a,b){ return a+b; }, 0) / serieLocal.length;
+  const maxY = Math.max.apply(null, serieLocal.concat(serieIntl)) * 1.25;
+
+  const x = function(i){ return padL + (snapshots.length === 1 ? plotW/2 : (i/(snapshots.length-1))*plotW); };
+  const y = function(v){ return padT + plotH - (v/maxY*plotH); };
+
+  const path = function(serie){ return serie.map(function(v,i){ return (i===0?'M':'L') + ' ' + x(i).toFixed(1) + ' ' + y(v).toFixed(1); }).join(' '); };
+
+  const fracsEje = [0,0.5,1];
+  const gridLines = fracsEje.map(function(f){
+    const yy = padT + plotH * f;
+    return '<line x1="'+padL+'" y1="'+yy+'" x2="'+(w-padR)+'" y2="'+yy+'" stroke="#BFBFBB" stroke-width="1"/>';
+  }).join('');
+
+  // etiquetas del eje Y, en un SVG aparte que queda fijo (no se desplaza)
+  const ejeLabels = fracsEje.map(function(f){
+    const yy = padT + plotH * f;
+    const val = (maxY * (1-f)).toFixed(0);
+    return '<text x="'+(axisW-6)+'" y="'+(yy+3)+'" text-anchor="end" font-family="Trebuchet MS, sans-serif" font-size="8.5" fill="#6E6E67">'+val+'%</text>';
+  }).join('');
+
+  // mostrar máximo ~14 etiquetas de fecha para que no se amontonen
+  const paso = Math.max(1, Math.ceil(snapshots.length / 14));
+  const xLabels = snapshots.map(function(s,i){
+    if(i % paso !== 0 && i !== snapshots.length-1) return '';
+    return '<text x="'+x(i)+'" y="'+(h-6)+'" text-anchor="middle" font-family="Trebuchet MS, sans-serif" font-size="8" fill="#6E6E67">'+fechaCorta(s.fecha_corte)+'</text>';
+  }).join('');
+
+  const dotsLocal = serieLocal.map(function(v,i){ return '<circle cx="'+x(i)+'" cy="'+y(v)+'" r="2.3" fill="'+COLOR_LOCAL+'"/>'; }).join('');
+  const dotsIntl = serieIntl.map(function(v,i){ return '<circle cx="'+x(i)+'" cy="'+y(v)+'" r="2.3" fill="'+COLOR_INTL+'"/>'; }).join('');
+
+  const yProm = y(promedioLocal);
+  const lineaPromedio =
+    '<line x1="'+padL+'" y1="'+yProm.toFixed(1)+'" x2="'+(w-padR)+'" y2="'+yProm.toFixed(1)+'" stroke="'+COLOR_LOCAL+'" stroke-width="1.2" stroke-dasharray="4 3" opacity="0.7"/>';
+
+  const axisSvg = '<svg width="'+axisW+'" height="'+h+'" viewBox="0 0 '+axisW+' '+h+'">'+ejeLabels+'</svg>';
+  const plotSvg =
+    '<svg width="'+w+'" height="'+h+'" viewBox="0 0 '+w+' '+h+'">' +
+      gridLines +
+      lineaPromedio +
+      '<path d="'+path(serieLocal)+'" fill="none" stroke="'+COLOR_LOCAL+'" stroke-width="2"/>' +
+      '<path d="'+path(serieIntl)+'" fill="none" stroke="'+COLOR_INTL+'" stroke-width="2"/>' +
+      dotsLocal + dotsIntl +
+      xLabels +
+    '</svg>';
+
+  cont.innerHTML =
+    '<div style="display:flex;align-items:flex-start;">' +
+      '<div style="flex-shrink:0;background:var(--paper-card);">'+axisSvg+'</div>' +
+      '<div style="overflow-x:auto;flex:1;min-width:0;padding-bottom:16px;">'+plotSvg+'</div>' +
+    '</div>' +
+    '<div class="line-chart-legend">' +
+      '<span><i class="swatch" style="width:10px;height:10px;border-radius:2px;display:inline-block;background:'+COLOR_LOCAL+'"></i>% acciones locales (sistema)</span>' +
+      '<span><i class="swatch" style="width:10px;height:10px;border-radius:2px;display:inline-block;background:'+COLOR_INTL+'"></i>% acciones internacionales (sistema)</span>' +
+      '<span><i class="swatch" style="width:10px;height:2px;margin-top:5px;display:inline-block;background:'+COLOR_LOCAL+';opacity:.7;"></i>promedio histórico local ('+fmtPct(promedioLocal)+')</span>' +
+    '</div>';
+}
+renderLineChart('chart-evolucion', HISTORIAL.snapshots);
+
+/* ===================== EXPLORADOR: RV local / RV internacional / por AFP ===================== */
+const detalleAcciones = ultimo.detalle_acciones || [];
+const dataLocal = detalleAcciones.filter(function(r){ return r.categoria_amplia === 'Renta variable local'; });
+const dataIntl = detalleAcciones.filter(function(r){ return r.categoria_amplia === 'Renta variable internacional'; });
+
+/* --- pestañas (soporta varios grupos independientes vía .tabgroup) --- */
+document.querySelectorAll('.tabgroup').forEach(function(grupo){
+  grupo.querySelectorAll('.tab-btn').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      grupo.querySelectorAll('.tab-btn').forEach(function(b){ b.classList.remove('active'); });
+      btn.classList.add('active');
+      grupo.querySelectorAll('.tab-panel').forEach(function(p){
+        p.style.display = (p.dataset.panel === btn.dataset.tab) ? 'block' : 'none';
+      });
+    });
+  });
+});
+
+/* --- helper genérico: llenar un select de nemotécnicos y renderizar tabla por AFP --- */
+const accionesCirculacion = HISTORIAL.acciones_circulacion || {};
+
+function celdaPctCompania(nemo, noAcciones){
+  const dato = accionesCirculacion[nemo];
+  if(!dato || !noAcciones) return '<td class="num cell-zero" title="Dato de acciones en circulación no disponible/verificado">—</td>';
+  const pct = noAcciones / dato.acciones * 100;
+  const clase = pct >= 10 ? 'cell-neg' : (pct >= 8 ? 'cell-pos' : '');
+  return '<td class="num '+clase+'" title="Fuente: '+dato.fuente+' ('+dato.fecha_dato+')">'+fmtPct(pct)+(pct>=10?' ⚠':'')+'</td>';
+}
+
+/* --- moneda del explorador de tenencias (COP/USD, compartida por las 3 pestañas) --- */
+let monedaExplorador = 'COP';
+function fmtExplorador(v){ return monedaExplorador === 'USD' ? fmtUSD(v) : fmtCOP(v); }
+
+function armarPanelPorNemo(data, selectEl, resumenEl, tablaBodyEl, unidadLabel, esLocal){
+  const nemosUnicos = Array.from(new Set(data.map(function(r){ return r.nemotecnico; })))
+    .sort(function(a,b){ return a.localeCompare(b); });
+  selectEl.innerHTML = nemosUnicos.map(function(n){ return '<option value="'+n.replace(/"/g,'&quot;')+'">'+n+'</option>'; }).join('');
+
+  function render(){
+    const nemo = selectEl.value;
+    const filas = data.filter(function(r){ return r.nemotecnico === nemo; }).sort(function(a,b){ return b.valor_mercado - a.valor_mercado; });
+    const nombre = filas.length ? filas[0].nombre : nemo;
+    const totalValor = filas.reduce(function(s,r){ return s + r.valor_mercado; }, 0);
+    const totalAcc = filas.reduce(function(s,r){ return s + r.no_acciones; }, 0);
+
+    resumenEl.innerHTML =
+      '<b>'+nemo+'</b> ('+nombre+'): el sistema tiene <b>'+fmtExplorador(totalValor)+'</b>'+
+      (totalAcc > 0 ? ' en <b>'+Math.round(totalAcc).toLocaleString('es-CO')+'</b> '+unidadLabel : '')+
+      ', repartidos entre <b>'+filas.length+'</b> AFP.'+
+      (esLocal && accionesCirculacion[nemo] ? ' &nbsp;·&nbsp; acciones en circulación: <b>'+accionesCirculacion[nemo].acciones.toLocaleString('es-CO')+'</b> ('+accionesCirculacion[nemo].fecha_dato+')' : '');
+
+    if(filas.length === 0){
+      tablaBodyEl.innerHTML = '<tr><td colspan="'+(esLocal?4:3)+'" class="empty-state">Sin posiciones registradas.</td></tr>';
+      return;
+    }
+    tablaBodyEl.innerHTML = filas.map(function(r){
+      return '<tr>'+
+        '<td>'+r.afp+'</td>'+
+        '<td class="num">'+(r.no_acciones>0 ? Math.round(r.no_acciones).toLocaleString('es-CO') : '—')+'</td>'+
+        '<td class="num">'+fmtExplorador(r.valor_mercado)+'</td>'+
+        (esLocal ? celdaPctCompania(nemo, r.no_acciones) : '')+
+      '</tr>';
+    }).join('');
+  }
+
+  selectEl.addEventListener('change', render);
+  if(nemosUnicos.length){ selectEl.value = nemosUnicos[0]; render(); }
+  return render;
+}
+
+const renderRvLocal = armarPanelPorNemo(
+  dataLocal,
+  document.getElementById('select-nemo-local'),
+  document.getElementById('resumen-rv-local'),
+  document.querySelector('#tabla-rv-local tbody'),
+  'acciones',
+  true
+);
+
+const renderRvIntl = armarPanelPorNemo(
+  dataIntl,
+  document.getElementById('select-nemo-intl'),
+  document.getElementById('resumen-rv-intl'),
+  document.querySelector('#tabla-rv-intl tbody'),
+  'unidades',
+  false
+);
+
+/* --- panel: por AFP (todo el portafolio accionario consolidado) --- */
+const selectAfp = document.getElementById('select-afp');
+const selectCategoriaAfp = document.getElementById('select-categoria-afp');
+const afpsUnicos = Array.from(new Set(detalleAcciones.map(function(r){ return r.afp; }))).sort();
+selectAfp.innerHTML = afpsUnicos.map(function(a){ return '<option value="'+a+'">'+a+'</option>'; }).join('');
+
+function renderPorAfp(){
+  const afp = selectAfp.value;
+  const cat = selectCategoriaAfp.value;
+  const soloLocal = cat === 'Renta variable local';
+  const filas = detalleAcciones
+    .filter(function(r){ return r.afp === afp && (cat === 'todas' || r.categoria_amplia === cat); })
+    .sort(function(a,b){ return b.valor_mercado - a.valor_mercado; });
+
+  const resumenAfp = (ultimo.resumen_por_afp || []).find(function(a){ return a.afp === afp; });
+  const totalPortafolio = resumenAfp ? resumenAfp.total_portafolio : detalleAcciones.filter(function(r){return r.afp===afp;}).reduce(function(s,r){ return s+r.valor_mercado; },0);
+  const totalFiltrado = filas.reduce(function(s,r){ return s + r.valor_mercado; }, 0);
+
+  const etiquetaCat = cat === 'todas' ? 'renta variable (local + internacional)' : cat.toLowerCase();
+  document.getElementById('resumen-portafolio').innerHTML =
+    '<b>'+afp+'</b>: <b>'+fmtExplorador(totalFiltrado)+'</b> en '+etiquetaCat+' ('+filas.length+' instrumentos)'+
+    (resumenAfp ? ' &nbsp;·&nbsp; equivale a <b>'+fmtPct(totalFiltrado/totalPortafolio*100)+'</b> del portafolio total de la AFP' : '');
+
+  document.getElementById('th-emisor').style.display = soloLocal ? 'none' : '';
+  document.getElementById('th-pct-compania').style.display = soloLocal ? '' : 'none';
+
+  const tbody = document.querySelector('#tabla-por-portafolio tbody');
+  if(filas.length === 0){
+    tbody.innerHTML = '<tr><td colspan="'+(soloLocal?5:6)+'" class="empty-state">Sin posiciones registradas.</td></tr>';
+    return;
+  }
+  tbody.innerHTML = filas.map(function(r){
+    return '<tr>'+
+      '<td>'+r.nemotecnico+'</td>'+
+      (soloLocal ? '' : '<td>'+r.nombre+'</td>')+
+      '<td>'+r.categoria_fina+'</td>'+
+      '<td class="num">'+(r.no_acciones>0 ? Math.round(r.no_acciones).toLocaleString('es-CO') : '—')+'</td>'+
+      '<td class="num">'+fmtExplorador(r.valor_mercado)+'</td>'+
+      '<td class="num">'+fmtPct(r.valor_mercado/totalPortafolio*100)+'</td>'+
+      (soloLocal ? celdaPctCompania(r.nemotecnico, r.no_acciones) : '')+
+    '</tr>';
+  }).join('');
+}
+selectAfp.addEventListener('change', renderPorAfp);
+selectCategoriaAfp.addEventListener('change', renderPorAfp);
+if(afpsUnicos.length){ selectAfp.value = afpsUnicos[0]; renderPorAfp(); }
+
+/* toggle COP/USD del explorador: re-renderiza las 3 pestañas sin recalcular nada más */
+document.querySelectorAll('#explorar-moneda-toggle .moneda-btn').forEach(function(btn){
+  btn.addEventListener('click', function(){
+    monedaExplorador = btn.dataset.moneda;
+    document.querySelectorAll('#explorar-moneda-toggle .moneda-btn').forEach(function(b){ b.classList.toggle('activo', b === btn); });
+    renderRvLocal();
+    renderRvIntl();
+    renderPorAfp();
+  });
+});
+
+/* ===================== MOVIMIENTO MENSUAL ===================== */
+const snapshots = HISTORIAL.snapshots; // orden cronológico ascendente
+
+/* Mapa global nemotécnico -> {nombre, categoria_amplia, categoria_fina},
+   construido recorriendo todos los cortes (por si un instrumento ya no
+   aparece en el más reciente pero sí en meses anteriores). */
+const infoInstrumento = {};
+snapshots.forEach(function(snap){
+  (snap.detalle_acciones || []).forEach(function(r){
+    infoInstrumento[r.nemotecnico] = { nombre: r.nombre, categoria_amplia: r.categoria_amplia, categoria_fina: r.categoria_fina };
+  });
+});
+
+const todasAfps = Array.from(new Set(snapshots.flatMap(function(s){ return (s.detalle_acciones||[]).map(function(r){ return r.afp; }); }))).sort();
+
+/* ---------- Sub-tab: Serie por acción (comparativo entre AFPs) ---------- */
+const selMovCategoria = document.getElementById('select-mov-categoria');
+const selMovNemo = document.getElementById('select-mov-nemo');
+const selMovMedida = document.getElementById('select-mov-medida');
+const movAfpChecks = document.getElementById('mov-afp-checks');
+
+/* un color por AFP, para poder distinguirlas en la gráfica comparativa.
+   Se usan los cuatro colores corporativos, que se diferencian bien entre sí:
+   azul oscuro, rojo quemado, gris ratón y negro. */
+const PALETA_AFP = ['#1F4E79', '#963826', '#A8A89F', '#1A1A1A', '#4A6E8F'];
+const COLOR_AFP = {};
+todasAfps.forEach(function(afp, i){ COLOR_AFP[afp] = PALETA_AFP[i % PALETA_AFP.length]; });
+
+/* texto blanco o negro según qué tan claro sea el fondo, para que siempre se lea */
+function textoSobre(colorHex){
+  const r = parseInt(colorHex.substr(1,2),16), g = parseInt(colorHex.substr(3,2),16), b = parseInt(colorHex.substr(5,2),16);
+  const luminancia = (0.299*r + 0.587*g + 0.114*b) / 255;
+  return luminancia > 0.6 ? '#1A1A1A' : '#FFFFFF';
+}
+
+movAfpChecks.innerHTML = todasAfps.map(function(afp){
+  const idSeguro = 'movafp-' + afp.replace(/[^a-zA-Z0-9]/g, '_');
+  return '<label class="afp-check" for="'+idSeguro+'" data-afp="'+afp+'">'+
+    '<input type="checkbox" id="'+idSeguro+'" value="'+afp+'" checked>'+
+    '<span>'+afp+'</span>'+
+  '</label>';
+}).join('');
+
+/* pinta cada tarjeta con el color de su AFP cuando está marcada */
+function actualizarEstiloAfpChecks(){
+  Array.from(movAfpChecks.querySelectorAll('.afp-check')).forEach(function(label){
+    const afp = label.dataset.afp;
+    const color = COLOR_AFP[afp];
+    const activa = label.querySelector('input').checked;
+    if(activa){
+      label.style.background = color;
+      label.style.borderColor = color;
+      label.style.color = textoSobre(color);
+    } else {
+      label.style.background = '#fff';
+      label.style.borderColor = 'var(--rule)';
+      label.style.color = 'var(--ink-soft)';
+    }
+  });
+}
+
+function afpsSeleccionadas(){
+  return Array.from(movAfpChecks.querySelectorAll('input[type=checkbox]:checked')).map(function(c){ return c.value; });
+}
+
+/* tenencia de un nemotécnico en una AFP concreta dentro de un corte */
+function tenenciaEnSnapshot(snap, nemo, afp){
+  return (snap.detalle_acciones || [])
+    .filter(function(r){ return r.nemotecnico === nemo && r.afp === afp; })
+    .reduce(function(acc, r){ acc.valor += r.valor_mercado; acc.acciones += r.no_acciones; return acc; }, {valor:0, acciones:0});
+}
+
+function poblarNemosPorCategoria(){
+  const cat = selMovCategoria.value;
+  const nemos = Array.from(new Set(
+    Object.keys(infoInstrumento).filter(function(n){ return infoInstrumento[n].categoria_amplia === cat; })
+  )).sort(function(a,b){ return a.localeCompare(b); });
+  selMovNemo.innerHTML = nemos.map(function(n){ return '<option value="'+n.replace(/"/g,'&quot;')+'">'+n+'</option>'; }).join('');
+}
+
+function renderMovSerie(){
+  const insuficiente = snapshots.length < 2;
+  document.getElementById('mov-serie-insuficiente').style.display = insuficiente ? 'block' : 'none';
+  document.getElementById('mov-serie-content').style.display = insuficiente ? 'none' : 'block';
+  document.getElementById('mov-serie-insuficiente').textContent =
+    'Por ahora solo hay ' + snapshots.length + ' corte(s) cargado(s). Sube más meses para ver la evolución de compras y ventas.';
+  if(insuficiente) return;
+
+  const nemo = selMovNemo.value;
+  if(!nemo) return;
+  const info = infoInstrumento[nemo] || {nombre:nemo};
+  const afpsSel = afpsSeleccionadas();
+  const medida = selMovMedida.value; // 'acciones' | 'valor'
+  const esValor = medida === 'valor';
+  const fmtMedida = esValor ? fmtCOP : function(v){ return Math.round(v).toLocaleString('es-CO'); };
+  const unidadTexto = esValor ? '' : ' acciones';
+
+  const cont = document.getElementById('chart-mov-serie');
+  cont.style.paddingBottom = '16px';
+  const theadRow = document.getElementById('mov-serie-thead-row');
+  const tbody = document.querySelector('#tabla-mov-serie tbody');
+
+  if(afpsSel.length === 0){
+    document.getElementById('resumen-mov-serie').textContent = 'Marca al menos una AFP para ver el comparativo.';
+    cont.innerHTML = '';
+    theadRow.innerHTML = '<th>Corte</th>';
+    tbody.innerHTML = '';
+    return;
+  }
+
+  /* serie de movimiento neto: para cada AFP, el cambio de cada mes vs el mes anterior */
+  const meses = snapshots.slice(1).map(function(s){ return s.fecha_corte; });
+  const deltasPorAfp = {};
+  afpsSel.forEach(function(afp){
+    deltasPorAfp[afp] = snapshots.slice(1).map(function(s, idx){
+      const actual = tenenciaEnSnapshot(s, nemo, afp);
+      const previo = tenenciaEnSnapshot(snapshots[idx], nemo, afp);
+      return esValor ? (actual.valor - previo.valor) : (actual.acciones - previo.acciones);
+    });
+  });
+
+  /* resumen: variación acumulada de cada AFP en todo el periodo cargado */
+  const acumulados = afpsSel.map(function(afp){
+    const total = deltasPorAfp[afp].reduce(function(a,b){ return a+b; }, 0);
+    return { afp: afp, total: total };
+  });
+  document.getElementById('resumen-mov-serie').innerHTML =
+    '<b>'+nemo+'</b> ('+info.nombre+') · movimiento neto acumulado entre '+meses[0]+' y '+meses[meses.length-1]+': '+
+    acumulados.map(function(a){
+      return '<b style="color:'+COLOR_AFP[a.afp]+'">'+a.afp+'</b> '+
+        '<b style="color:'+(a.total>=0?COLOR_COMPRA:'#963826')+'">'+(a.total>=0?'+':'')+fmtMedida(a.total)+unidadTexto+'</b>';
+    }).join(' &nbsp;·&nbsp; ');
+
+  /* ---- gráfica de barras agrupadas alrededor de una línea de cero ---- */
+  const nMeses = meses.length, nAfps = afpsSel.length;
+  const anchoGrupo = Math.max(16, nAfps * 9 + 8);
+  const w = Math.max(560, nMeses * anchoGrupo + 70);
+  const h = 250;
+  const padL = 62, padR = 16, padT = 16, padB = 40;
+  const plotW = w - padL - padR, plotH = h - padT - padB;
+
+  const todosDeltas = afpsSel.reduce(function(acc, afp){ return acc.concat(deltasPorAfp[afp]); }, []);
+  let maxPos = Math.max.apply(null, todosDeltas.concat([0]));
+  let minNeg = Math.min.apply(null, todosDeltas.concat([0]));
+  if(maxPos === 0 && minNeg === 0){ maxPos = 1; minNeg = -1; }
+  const rango = (maxPos - minNeg) * 1.1 || 1;
+  const yCero = padT + (maxPos * 1.05 / rango) * plotH;
+  const escala = function(v){ return (v / rango) * plotH; };
+
+  const groupW = plotW / nMeses;
+  const barW = Math.min(14, (groupW * 0.8) / nAfps);
+
+  let bars = '';
+  meses.forEach(function(mes, i){
+    const gx = padL + i * groupW + groupW/2;
+    const inicioGrupo = gx - (barW * nAfps)/2;
+    afpsSel.forEach(function(afp, j){
+      const v = deltasPorAfp[afp][i];
+      if(v === 0) return;
+      const alto = Math.abs(escala(v));
+      const y0 = v >= 0 ? yCero - alto : yCero;
+      const x0 = inicioGrupo + j * barW;
+      bars += '<rect x="'+x0.toFixed(1)+'" y="'+y0.toFixed(1)+'" width="'+(barW*0.86).toFixed(1)+'" height="'+Math.max(alto,0.8).toFixed(1)+'" '+
+              'fill="'+COLOR_AFP[afp]+'" opacity="'+(v>=0?0.92:0.55)+'" rx="1">'+
+              '<title>'+afp+' · '+mes+': '+(v>=0?'+':'')+fmtMedida(v)+unidadTexto+'</title></rect>';
+    });
+  });
+
+  /* etiquetas de mes, espaciadas para que no se amontonen */
+  const paso = Math.max(1, Math.ceil(nMeses / 14));
+  const xLabels = meses.map(function(mes, i){
+    if(i % paso !== 0 && i !== nMeses-1) return '';
+    const gx = padL + i * groupW + groupW/2;
+    return '<text x="'+gx.toFixed(1)+'" y="'+(h-16)+'" text-anchor="middle" font-family="Trebuchet MS, sans-serif" font-size="8.5" fill="#6E6E67">'+fechaCorta(mes)+'</text>';
+  }).join('');
+
+  /* eje Y: línea de cero marcada + referencia arriba y abajo */
+  const refs = [
+    { v: maxPos, y: yCero - escala(maxPos) },
+    { v: 0, y: yCero },
+    { v: minNeg, y: yCero - escala(minNeg) },
+  ];
+  const gridLines = refs.map(function(r){
+    const esCero = r.v === 0;
+    const etiqueta = esValor ? fmtBillones(r.v) : (Math.abs(r.v) >= 1e6 ? (r.v/1e6).toFixed(1)+'M' : Math.round(r.v).toLocaleString('es-CO'));
+    return '<line x1="'+padL+'" y1="'+r.y.toFixed(1)+'" x2="'+(w-padR)+'" y2="'+r.y.toFixed(1)+'" stroke="'+(esCero?'#1A1A1A':'#BFBFBB')+'" stroke-width="'+(esCero?1.4:1)+'"/>'+
+           '<text x="'+(padL-8)+'" y="'+(r.y+3).toFixed(1)+'" text-anchor="end" font-family="Trebuchet MS, sans-serif" font-size="8.5" fill="#6E6E67">'+etiqueta+'</text>';
+  }).join('');
+
+  cont.innerHTML = '<div style="overflow-x:auto;padding-bottom:14px;">'+
+      '<svg width="'+w+'" height="'+h+'" viewBox="0 0 '+w+' '+h+'">'+gridLines+bars+xLabels+'</svg>'+
+    '</div>'+
+    '<div class="line-chart-legend">'+
+      afpsSel.map(function(afp){
+        return '<span><i class="swatch" style="width:10px;height:10px;border-radius:2px;display:inline-block;background:'+COLOR_AFP[afp]+'"></i>'+afp+'</span>';
+      }).join('')+
+      '<span style="color:var(--ink-soft);">Barra hacia arriba = compra neta · hacia abajo = venta neta</span>'+
+    '</div>';
+
+  /* ---- tabla mes a mes, una columna por AFP ---- */
+  theadRow.innerHTML = '<th>Corte</th>' +
+    afpsSel.map(function(afp){ return '<th>'+afp+'</th>'; }).join('') +
+    (afpsSel.length > 1 ? '<th>Total seleccionadas</th>' : '');
+
+  tbody.innerHTML = meses.map(function(mes, i){
+    let total = 0;
+    const celdas = afpsSel.map(function(afp){
+      const v = deltasPorAfp[afp][i];
+      total += v;
+      if(v === 0) return '<td class="num cell-zero">—</td>';
+      const clase = v > 0 ? 'cell-pos' : 'cell-neg';
+      return '<td class="num '+clase+'">'+(v>0?'+':'')+fmtMedida(v)+'</td>';
+    }).join('');
+    const celdaTotal = afpsSel.length > 1
+      ? (total === 0 ? '<td class="num cell-zero">—</td>'
+                     : '<td class="num '+(total>0?'cell-pos':'cell-neg')+'">'+(total>0?'+':'')+fmtMedida(total)+'</td>')
+      : '';
+    return '<tr><td>'+mes+'</td>'+celdas+celdaTotal+'</tr>';
+  }).join('');
+}
+
+selMovCategoria.addEventListener('change', function(){ poblarNemosPorCategoria(); renderMovSerie(); });
+selMovNemo.addEventListener('change', renderMovSerie);
+selMovMedida.addEventListener('change', renderMovSerie);
+movAfpChecks.addEventListener('change', function(){ actualizarEstiloAfpChecks(); renderMovSerie(); });
+
+function marcarTodasAfps(marcar){
+  Array.from(movAfpChecks.querySelectorAll('input[type=checkbox]')).forEach(function(c){ c.checked = marcar; });
+  actualizarEstiloAfpChecks();
+  renderMovSerie();
+}
+document.getElementById('btn-mov-afp-todas').addEventListener('click', function(){ marcarTodasAfps(true); });
+document.getElementById('btn-mov-afp-ninguna').addEventListener('click', function(){ marcarTodasAfps(false); });
+
+actualizarEstiloAfpChecks();
+poblarNemosPorCategoria();
+renderMovSerie();
+
+/* ---------- Sub-tab: Ranking mensual ---------- */
+const selRankingHorizonte = document.getElementById('select-ranking-horizonte');
+const selMovMes = document.getElementById('select-mov-mes');
+const selRankingDesde = document.getElementById('select-ranking-desde');
+const selRankingHasta = document.getElementById('select-ranking-hasta');
+const wrapRankingMesEspecifico = document.getElementById('ranking-mes-especifico-wrap');
+const wrapRankingRango = document.getElementById('ranking-rango-wrap');
+const selMovAfpRanking = document.getElementById('select-mov-afp-ranking');
+const selMovRankingCategoria = document.getElementById('select-mov-ranking-categoria');
+
+/* toggle de moneda del ranking: el criterio de orden siempre es el monto en
+   COP (así se decidió), esto solo cambia cómo se muestra el número */
+let monedaRanking = 'COP';
+const btnsMonedaRanking = document.querySelectorAll('#ranking-moneda-toggle .moneda-btn');
+btnsMonedaRanking.forEach(function(btn){
+  btn.addEventListener('click', function(){
+    monedaRanking = btn.dataset.moneda;
+    btnsMonedaRanking.forEach(function(b){ b.classList.toggle('activo', b === btn); });
+    const etiqueta = 'Monto aprox. (compra/venta) — ' + monedaRanking;
+    document.getElementById('th-monto-compras').textContent = etiqueta;
+    document.getElementById('th-monto-ventas').textContent = etiqueta;
+    renderMovRanking();
+  });
+});
+selMovAfpRanking.innerHTML += todasAfps.map(function(a){ return '<option value="'+a+'">'+a+'</option>'; }).join('');
+
+/* "mes específico" compara ese mes contra el anterior, igual que en la matriz */
+selMovMes.innerHTML = snapshots.slice(1).map(function(s, i){
+  return '<option value="'+s.fecha_corte+'">'+s.fecha_corte+' (vs. '+snapshots[i].fecha_corte+')</option>';
+}).join('');
+selRankingDesde.innerHTML = snapshots.map(function(s){ return '<option value="'+s.fecha_corte+'">'+s.fecha_corte+'</option>'; }).join('');
+selRankingHasta.innerHTML = snapshots.map(function(s){ return '<option value="'+s.fecha_corte+'">'+s.fecha_corte+'</option>'; }).join('');
+selRankingDesde.value = snapshots[0].fecha_corte;
+selRankingHasta.value = snapshots[snapshots.length-1].fecha_corte;
+
+function resolverPeriodoRanking(){
+  return resolverPeriodoGenerico(selRankingHorizonte, selMovMes, selRankingDesde, selRankingHasta);
+}
+
+function renderMovRanking(){
+  const insuficiente = snapshots.length < 2;
+  document.getElementById('mov-ranking-insuficiente').style.display = insuficiente ? 'block' : 'none';
+  document.getElementById('mov-ranking-content').style.display = insuficiente ? 'none' : 'block';
+  if(insuficiente) return;
+
+  const { inicio, fin } = resolverPeriodoRanking();
+  const resumenEl = document.getElementById('resumen-mov-ranking');
+  if(!inicio || !fin || inicio.fecha_corte === fin.fecha_corte){
+    resumenEl.textContent = 'El periodo elegido no tiene suficientes cortes para comparar.';
+    document.querySelector('#tabla-top-compras tbody').innerHTML = '';
+    document.querySelector('#tabla-top-ventas tbody').innerHTML = '';
+    return;
+  }
+
+  const afpFiltro = selMovAfpRanking.value;
+  const catFiltro = selMovRankingCategoria.value;
+
+  resumenEl.innerHTML =
+    'Comparando <b>'+fin.fecha_corte+'</b> vs <b>'+inicio.fecha_corte+'</b>'+
+    (afpFiltro !== 'todas' ? ' &nbsp;·&nbsp; '+afpFiltro : ' &nbsp;·&nbsp; sistema (todas las AFP)')+
+    (catFiltro !== 'todas' ? ' &nbsp;·&nbsp; '+catFiltro.toLowerCase() : '');
+
+  function agregarPorNemo(snap){
+    const map = {};
+    (snap.detalle_acciones || []).forEach(function(r){
+      if(afpFiltro !== 'todas' && r.afp !== afpFiltro) return;
+      if(catFiltro !== 'todas' && r.categoria_amplia !== catFiltro) return;
+      if(!map[r.nemotecnico]) map[r.nemotecnico] = {valor:0, acciones:0};
+      map[r.nemotecnico].valor += r.valor_mercado;
+      map[r.nemotecnico].acciones += r.no_acciones;
+    });
+    return map;
+  }
+  const mapAnterior = agregarPorNemo(inicio);
+  const mapActual = agregarPorNemo(fin);
+  const todosNemos = Array.from(new Set(Object.keys(mapAnterior).concat(Object.keys(mapActual))));
+
+  const cambios = todosNemos.map(function(n){
+    const v0 = mapAnterior[n] ? mapAnterior[n].valor : 0;
+    const v1 = mapActual[n] ? mapActual[n].valor : 0;
+    const a0 = mapAnterior[n] ? mapAnterior[n].acciones : 0;
+    const a1 = mapActual[n] ? mapActual[n].acciones : 0;
+    const deltaAcc = a1 - a0;
+    // precio por acción al final del periodo, para valorar solo la compra/venta
+    // (y no mezclarla con la revalorización de lo que ya tenía por cambio de precio)
+    const precio = a1 > 0 ? v1/a1 : (a0 > 0 ? v0/a0 : 0);
+    return { nemo:n, deltaValor: deltaAcc*precio, deltaValorTotal: v1-v0, deltaAcc: deltaAcc, info: infoInstrumento[n] || {} };
+  }).filter(function(c){ return Math.abs(c.deltaAcc) > 0.5; }); // solo movimiento real de acciones, no revalorización por precio
+
+  const compras = cambios.filter(function(c){ return c.deltaAcc > 0; }).sort(function(a,b){ return b.deltaValor - a.deltaValor; }).slice(0,10);
+  const ventas = cambios.filter(function(c){ return c.deltaAcc < 0; }).sort(function(a,b){ return a.deltaValor - b.deltaValor; }).slice(0,10);
+
+  function filaTabla(c){
+    const color = c.deltaAcc >= 0 ? COLOR_COMPRA : '#963826';
+    const revalorizacion = c.deltaValorTotal - c.deltaValor;
+    const fmtMoneda = monedaRanking === 'USD' ? fmtUSD : fmtCOP;
+    const tooltip = 'Monto de la '+(c.deltaAcc>=0?'compra':'venta')+': '+fmtCOP(c.deltaValor)+' ('+fmtUSD(c.deltaValor)+')'+
+      ' · Cambio total de valor de la posición (incluye variación de precio de lo que ya tenía): '+fmtCOP(c.deltaValorTotal)+
+      ' · Efecto solo del precio: '+(revalorizacion>=0?'+':'')+fmtCOP(revalorizacion)+
+      ' · TRM '+TRM.toLocaleString('es-CO')+' ('+TRM_FECHA+')';
+    return '<tr>'+
+      '<td>'+c.nemo+'</td>'+
+      '<td>'+(c.info.categoria_fina||'—')+'</td>'+
+      '<td class="num" style="color:'+color+';font-weight:600;">'+(c.deltaAcc>=0?'+':'')+Math.round(c.deltaAcc).toLocaleString('es-CO')+'</td>'+
+      '<td class="num" style="color:'+color+';" title="'+tooltip+'">'+(c.deltaValor>=0?'+':'')+fmtMoneda(c.deltaValor)+'</td>'+
+    '</tr>';
+  }
+  document.querySelector('#tabla-top-compras tbody').innerHTML = compras.length
+    ? compras.map(filaTabla).join('')
+    : '<tr><td colspan="4" class="empty-state">Sin compras netas relevantes.</td></tr>';
+  document.querySelector('#tabla-top-ventas tbody').innerHTML = ventas.length
+    ? ventas.map(filaTabla).join('')
+    : '<tr><td colspan="4" class="empty-state">Sin ventas netas relevantes.</td></tr>';
+}
+selMovMes.addEventListener('change', renderMovRanking);
+selRankingHorizonte.addEventListener('change', function(){
+  wrapRankingMesEspecifico.style.display = selRankingHorizonte.value === 'mes-especifico' ? 'block' : 'none';
+  wrapRankingRango.style.display = selRankingHorizonte.value === 'rango' ? 'grid' : 'none';
+  renderMovRanking();
+});
+selMovMes.addEventListener('change', renderMovRanking);
+selRankingDesde.addEventListener('change', renderMovRanking);
+selRankingHasta.addEventListener('change', renderMovRanking);
+selMovAfpRanking.addEventListener('change', renderMovRanking);
+selMovRankingCategoria.addEventListener('change', renderMovRanking);
+renderMovRanking();
+
+/* ===================== MATRIZ DE MOVIMIENTO NETO (AFP x Acción) ===================== */
+const fechasDisponibles = snapshots.map(function(s){ return s.fecha_corte; });
+
+const selMatrizHorizonte = document.getElementById('select-matriz-horizonte');
+
+/* la opción "Último mes" muestra de qué mes se trata, para no dejar duda */
+(function etiquetarUltimoMes(){
+  const opt = Array.from(selMatrizHorizonte.options).find(function(o){ return o.value === '1m'; });
+  if(opt) opt.textContent = 'Último mes (' + fechaLarga(ultimo.fecha_corte) + ')';
+})();
+const selMatrizMes = document.getElementById('select-matriz-mes');
+const selMatrizDesde = document.getElementById('select-matriz-desde');
+const selMatrizHasta = document.getElementById('select-matriz-hasta');
+const selMatrizCategoria = document.getElementById('select-matriz-categoria');
+const selMatrizCategoriaFina = document.getElementById('select-matriz-categoria-fina');
+const selMatrizSector = document.getElementById('select-matriz-sector');
+const selMatrizColcap = document.getElementById('select-matriz-colcap');
+const selMatrizTop = document.getElementById('select-matriz-top');
+const wrapMesEspecifico = document.getElementById('matriz-mes-especifico-wrap');
+const wrapRango = document.getElementById('matriz-rango-wrap');
+
+/* --- filtro de nemotécnico(s) específico(s): menú desplegable + casillas --- */
+const nemoDropdownWrap = document.getElementById('nemo-dropdown-wrap');
+const btnNemoDropdown = document.getElementById('btn-nemo-dropdown');
+const btnNemoDropdownTexto = document.getElementById('btn-nemo-dropdown-texto');
+const nemoDropdownPanel = document.getElementById('nemo-dropdown-panel');
+const inputMatrizNemoBuscar = document.getElementById('input-matriz-nemo-buscar');
+const nemoChecklist = document.getElementById('nemo-checklist');
+const btnMatrizNemoLimpiar = document.getElementById('btn-matriz-nemo-limpiar');
+const btnNemoDropdownCerrar = document.getElementById('btn-nemo-dropdown-cerrar');
+
+const nombrePorNemoGlobal = {};
+const categoriaAmpliaPorNemoGlobal = {};
+snapshots.forEach(function(snap){
+  (snap.detalle_acciones || []).forEach(function(r){
+    nombrePorNemoGlobal[r.nemotecnico] = r.nombre;
+    categoriaAmpliaPorNemoGlobal[r.nemotecnico] = r.categoria_amplia;
+  });
+});
+// Este filtro es solo para acciones locales — para internacionales, usa el
+// selector de "Categoría" (Solo internacional) junto con Sector/COLCAP.
+const todosLosNemos = Object.keys(nombrePorNemoGlobal)
+  .filter(function(n){ return categoriaAmpliaPorNemoGlobal[n] === 'Renta variable local'; })
+  .sort(function(a,b){ return a.localeCompare(b); });
+
+nemoChecklist.innerHTML = todosLosNemos.map(function(n){
+  const idSeguro = 'nemochk-' + n.replace(/[^a-zA-Z0-9]/g, '_');
+  return '<label class="nemo-check-item" for="'+idSeguro+'">'+
+    '<input type="checkbox" id="'+idSeguro+'" value="'+n.replace(/"/g,'&quot;')+'">'+
+    '<span class="nemo-item-codigo">'+n+'</span>'+
+    '<span class="nemo-item-nombre">'+nombrePorNemoGlobal[n]+'</span>'+
+  '</label>';
+}).join('');
+
+function nemosSeleccionadosActuales(){
+  return Array.from(nemoChecklist.querySelectorAll('input[type=checkbox]:checked')).map(function(c){ return c.value; });
+}
+
+function actualizarTextoBotonNemos(){
+  const sel = nemosSeleccionadosActuales();
+  btnNemoDropdownTexto.textContent = sel.length
+    ? sel.length + ' nemotécnico(s): ' + sel.join(', ')
+    : 'Ninguno seleccionado — se usan los filtros de abajo';
+}
+actualizarTextoBotonNemos();
+
+/* abrir/cerrar el desplegable */
+btnNemoDropdown.addEventListener('click', function(e){
+  e.stopPropagation();
+  const abierto = nemoDropdownPanel.style.display !== 'none';
+  nemoDropdownPanel.style.display = abierto ? 'none' : 'block';
+});
+btnNemoDropdownCerrar.addEventListener('click', function(){ nemoDropdownPanel.style.display = 'none'; });
+document.addEventListener('click', function(e){
+  if(!nemoDropdownWrap.contains(e.target)) nemoDropdownPanel.style.display = 'none';
+});
+nemoDropdownPanel.addEventListener('click', function(e){ e.stopPropagation(); });
+
+/* buscador dentro del panel */
+inputMatrizNemoBuscar.addEventListener('input', function(){
+  const q = inputMatrizNemoBuscar.value.trim().toLowerCase();
+  Array.from(nemoChecklist.querySelectorAll('.nemo-check-item')).forEach(function(item){
+    item.style.display = item.textContent.toLowerCase().includes(q) ? '' : 'none';
+  });
+});
+
+/* selección con casillas */
+nemoChecklist.addEventListener('change', function(){
+  actualizarTextoBotonNemos();
+  renderMatriz();
+});
+
+btnMatrizNemoLimpiar.addEventListener('click', function(){
+  Array.from(nemoChecklist.querySelectorAll('input[type=checkbox]')).forEach(function(c){ c.checked = false; });
+  inputMatrizNemoBuscar.value = '';
+  Array.from(nemoChecklist.querySelectorAll('.nemo-check-item')).forEach(function(item){ item.style.display = ''; });
+  actualizarTextoBotonNemos();
+  renderMatriz();
+});
+
+/* categorías finas disponibles, con su código y descripción como ayuda */
+const categoriaFinaPorNemo = {};
+snapshots.forEach(function(snap){
+  (snap.detalle_acciones || []).forEach(function(r){
+    categoriaFinaPorNemo[r.nemotecnico] = r.categoria_fina;
+  });
+});
+const categoriasFinasDisponibles = Array.from(new Set(Object.values(categoriaFinaPorNemo))).sort();
+selMatrizCategoriaFina.innerHTML += categoriasFinasDisponibles.map(function(c){ return '<option value="'+c+'">'+c+'</option>'; }).join('');
+selMatrizCategoriaFina.addEventListener('change', function(){
+  const info = CATEGORIA_FINA_INFO[selMatrizCategoriaFina.value];
+  const nota = document.getElementById('matriz-categoria-fina-nota');
+  if(info){
+    nota.style.display = 'block';
+    nota.innerHTML = '<b>'+selMatrizCategoriaFina.value+'</b> ('+info.codigo+'): '+info.desc;
+  } else {
+    nota.style.display = 'none';
+  }
+  renderMatriz();
+});
+
+/* sectores disponibles, construidos a partir de todos los cortes */
+const sectorPorNemo = {};
+snapshots.forEach(function(snap){
+  (snap.detalle_acciones || []).forEach(function(r){
+    sectorPorNemo[r.nemotecnico] = r.sector || 'Otro / sin clasificar';
+  });
+});
+const sectoresDisponibles = Array.from(new Set(Object.values(sectorPorNemo))).sort();
+selMatrizSector.innerHTML += sectoresDisponibles.map(function(s){ return '<option value="'+s+'">'+s+'</option>'; }).join('');
+
+/* mes específico: solo se puede comparar desde el 2º corte en adelante */
+selMatrizMes.innerHTML = fechasDisponibles.slice(1).map(function(f){ return '<option value="'+f+'">'+f+'</option>'; }).join('');
+selMatrizMes.value = fechasDisponibles[fechasDisponibles.length-1];
+
+selMatrizDesde.innerHTML = fechasDisponibles.map(function(f){ return '<option value="'+f+'">'+f+'</option>'; }).join('');
+selMatrizHasta.innerHTML = fechasDisponibles.map(function(f){ return '<option value="'+f+'">'+f+'</option>'; }).join('');
+selMatrizDesde.value = fechasDisponibles[0];
+selMatrizHasta.value = fechasDisponibles[fechasDisponibles.length-1];
+
+function snapshotDe(fecha){ return snapshots.find(function(s){ return s.fecha_corte === fecha; }); }
+
+/* determina snapshot inicial y final según el horizonte elegido */
+function resolverPeriodoGenerico(selHorizonte, selMesEspecifico, selDesde, selHasta){
+  const h = selHorizonte.value;
+  const ultimaIdx = snapshots.length - 1;
+
+  if(h === '1m'){
+    return { inicio: snapshots[Math.max(0, ultimaIdx-1)], fin: snapshots[ultimaIdx] };
+  }
+  if(h === 'mes-especifico'){
+    const fin = snapshotDe(selMesEspecifico.value);
+    const idxFin = snapshots.indexOf(fin);
+    return { inicio: snapshots[Math.max(0, idxFin-1)], fin: fin };
+  }
+  if(h === '3m' || h === '6m' || h === '12m'){
+    const meses = h === '3m' ? 3 : (h === '6m' ? 6 : 12);
+    const idxInicio = Math.max(0, ultimaIdx - meses);
+    return { inicio: snapshots[idxInicio], fin: snapshots[ultimaIdx] };
+  }
+  if(h === 'rango'){
+    return { inicio: snapshotDe(selDesde.value), fin: snapshotDe(selHasta.value) };
+  }
+  return { inicio: snapshots[Math.max(0, ultimaIdx-1)], fin: snapshots[ultimaIdx] };
+}
+
+function resolverPeriodo(){
+  return resolverPeriodoGenerico(selMatrizHorizonte, selMatrizMes, selMatrizDesde, selMatrizHasta);
+}
+
+selMatrizHorizonte.addEventListener('change', function(){
+  wrapMesEspecifico.style.display = selMatrizHorizonte.value === 'mes-especifico' ? 'block' : 'none';
+  wrapRango.style.display = selMatrizHorizonte.value === 'rango' ? 'grid' : 'none';
+  renderMatriz();
+});
+selMatrizMes.addEventListener('change', renderMatriz);
+selMatrizDesde.addEventListener('change', renderMatriz);
+selMatrizHasta.addEventListener('change', renderMatriz);
+selMatrizCategoria.addEventListener('change', renderMatriz);
+selMatrizSector.addEventListener('change', renderMatriz);
+selMatrizColcap.addEventListener('change', function(){
+  document.getElementById('matriz-colcap-nota').style.display = selMatrizColcap.value === 'colcap' ? 'block' : 'none';
+  renderMatriz();
+});
+selMatrizTop.addEventListener('change', renderMatriz);
+
+const colcapPorNemo = {};
+snapshots.forEach(function(snap){
+  (snap.detalle_acciones || []).forEach(function(r){
+    if(r.colcap) colcapPorNemo[r.nemotecnico] = true;
+  });
+});
+
+function pasaFiltros(r, cat, catFina, sector, soloColcap){
+  if(cat !== 'todas' && r.categoria_amplia !== cat) return false;
+  if(catFina !== 'todas' && r.categoria_fina !== catFina) return false;
+  if(sector !== 'todos' && (sectorPorNemo[r.nemotecnico] || 'Otro / sin clasificar') !== sector) return false;
+  if(soloColcap && !colcapPorNemo[r.nemotecnico]) return false;
+  return true;
+}
+
+function renderMatriz(){
+  const { inicio, fin } = resolverPeriodo();
+  const resumenEl = document.getElementById('resumen-matriz');
+
+  if(!inicio || !fin || inicio.fecha_corte === fin.fecha_corte){
+    resumenEl.textContent = 'El periodo elegido no tiene suficientes cortes para comparar.';
+    document.getElementById('matriz-header-row').innerHTML = '<th class="matriz-afp-col">AFP</th>';
+    document.querySelector('#tabla-matriz tbody').innerHTML = '';
+    return;
+  }
+
+  const cat = selMatrizCategoria.value;
+  const catFina = selMatrizCategoriaFina.value;
+  const sector = selMatrizSector.value;
+  const soloColcap = selMatrizColcap.value === 'colcap';
+  const topN = parseInt(selMatrizTop.value, 10);
+  const nemosSeleccionados = nemosSeleccionadosActuales();
+  const haySeleccionExplicita = nemosSeleccionados.length > 0;
+
+  // filtro efectivo: si hay nemotécnicos elegidos a mano, esos mandan y se ignoran
+  // categoría/sector/colcap (el usuario ya sabe exactamente qué quiere ver)
+  function pasaFiltroEfectivo(r){
+    if(haySeleccionExplicita) return nemosSeleccionados.indexOf(r.nemotecnico) !== -1;
+    return pasaFiltros(r, cat, catFina, sector, soloColcap);
+  }
+
+  // mapa (afp, nemotecnico) -> acciones, para inicio y fin
+  function mapaAcciones(snap){
+    const m = {};
+    (snap.detalle_acciones || []).forEach(function(r){
+      if(!pasaFiltroEfectivo(r)) return;
+      m[r.afp+'|'+r.nemotecnico] = r.no_acciones;
+    });
+    return m;
+  }
+  const mIni = mapaAcciones(inicio);
+  const mFin = mapaAcciones(fin);
+
+  let nemosFinal;
+  if(haySeleccionExplicita){
+    // se mantienen todos los elegidos, en el orden alfabético en que aparecen en el select,
+    // incluso si no tuvieron movimiento en el periodo (para confirmar que no se movieron)
+    nemosFinal = nemosSeleccionados.slice().sort(function(a,b){ return a.localeCompare(b); });
+  } else {
+    // todos los nemotécnicos presentes (con los filtros de categoría/sector/colcap aplicados)
+    const nemosSet = {};
+    [inicio, fin].forEach(function(snap){
+      (snap.detalle_acciones || []).forEach(function(r){
+        if(!pasaFiltroEfectivo(r)) return;
+        nemosSet[r.nemotecnico] = true;
+      });
+    });
+    const nemos = Object.keys(nemosSet);
+
+    // delta total (abs, sumado entre AFPs) por nemotécnico, para ordenar y filtrar
+    const deltaPorNemo = nemos.map(function(n){
+      let totalAbs = 0;
+      todasAfps.forEach(function(afp){
+        const a0 = mIni[afp+'|'+n] || 0;
+        const a1 = mFin[afp+'|'+n] || 0;
+        totalAbs += Math.abs(a1 - a0);
+      });
+      return { nemo: n, totalAbs: totalAbs };
+    }).filter(function(x){ return x.totalAbs > 0; })
+      .sort(function(a,b){ return b.totalAbs - a.totalAbs; })
+      .slice(0, topN);
+
+    nemosFinal = deltaPorNemo.map(function(x){ return x.nemo; });
+  }
+
+  resumenEl.innerHTML =
+    'Comparando <b>'+fin.fecha_corte+'</b> vs <b>'+inicio.fecha_corte+'</b>'+
+    (haySeleccionExplicita ? ' &nbsp;·&nbsp; <b>selección manual</b> de '+nemosFinal.length+' nemotécnico(s)' : (
+      (cat !== 'todas' ? ' &nbsp;·&nbsp; '+cat.toLowerCase() : '')+
+      (catFina !== 'todas' ? ' &nbsp;·&nbsp; '+catFina : '')+
+      (sector !== 'todos' ? ' &nbsp;·&nbsp; sector: '+sector : '')+
+      (soloColcap ? ' &nbsp;·&nbsp; solo COLCAP' : '')+
+      ' &nbsp;·&nbsp; <b>'+nemosFinal.length+'</b> instrumento(s) con movimiento'+
+      (nemosFinal.length === topN ? ' (mostrando las '+topN+' más activas)' : '')
+    ));
+
+  // encabezado
+  const headerRow = document.getElementById('matriz-header-row');
+  headerRow.innerHTML = '<th class="matriz-afp-col">AFP</th>' +
+    nemosFinal.map(function(n){ return '<th>'+n+'</th>'; }).join('');
+
+  // filas por AFP
+  const tbody = document.querySelector('#tabla-matriz tbody');
+  if(nemosFinal.length === 0){
+    tbody.innerHTML = '<tr><td class="matriz-afp-col">—</td><td class="empty-state">Sin movimientos en el periodo.</td></tr>';
+    return;
+  }
+  tbody.innerHTML = todasAfps.map(function(afp){
+    const celdas = nemosFinal.map(function(n){
+      const a0 = mIni[afp+'|'+n] || 0;
+      const a1 = mFin[afp+'|'+n] || 0;
+      const delta = a1 - a0;
+      if(delta === 0) return '<td class="num cell-zero">—</td>';
+      const cls = delta > 0 ? 'cell-pos' : 'cell-neg';
+      return '<td class="num '+cls+'">'+(delta>0?'+':'')+Math.round(delta).toLocaleString('es-CO')+'</td>';
+    }).join('');
+    return '<tr><td class="matriz-afp-col">'+afp+'</td>'+celdas+'</tr>';
+  }).join('');
+}
+
+wrapMesEspecifico.style.display = 'none';
+wrapRango.style.display = 'none';
+renderMatriz();
+
+/* ===================== BOTONES DE DESCARGA EN CADA TABLA ===================== */
+[
+  ['tabla-rv-local',        'tenencias_renta_variable_local', {}],
+  ['tabla-rv-intl',         'tenencias_renta_variable_internacional', {}],
+  ['tabla-por-portafolio',  'portafolio_por_afp', {}],
+  ['tabla-mov-serie',       'movimiento_mensual_por_accion', {}],
+  ['tabla-top-compras',     'top_compras_del_mes', {slotId: 'btn-excel-compras-slot'}],
+  ['tabla-top-ventas',      'top_ventas_del_mes', {slotId: 'btn-excel-ventas-slot'}],
+  ['tabla-matriz',          'matriz_movimiento_neto', {}],
+].forEach(function(cfg){ agregarBotonExcel(cfg[0], cfg[1], cfg[2]); });
+
+} /* fin iniciarDashboard */
+
+/* ===================== CARGA DE DATOS ===================== */
+/* Los datos viven en datos.json aparte, para que esta pagina aparezca
+   de inmediato en vez de esperar a que se procese todo el historico. */
+(function cargarDatos(){
+  var aviso = document.getElementById('estado-carga');
+  var contenido = document.getElementById('dashboard-contenido');
+
+  fetch('datos.json', {cache: 'no-cache'})
+    .then(function(r){
+      if(!r.ok) throw new Error('No se pudo descargar datos.json (HTTP ' + r.status + ')');
+      return r.json();
+    })
+    .then(function(datos){
+      aviso.querySelector('.carga-texto').textContent = 'Preparando el tablero...';
+      /* pequena pausa para que el navegador alcance a pintar el mensaje */
+      setTimeout(function(){
+        try {
+          iniciarDashboard(datos);
+          aviso.style.display = 'none';
+          contenido.style.display = '';
+        } catch(err){
+          aviso.innerHTML = '<div class="carga-error"><b>Ocurrio un error al construir el tablero.</b><br>' +
+            String(err.message || err) + '</div>';
+        }
+      }, 50);
+    })
+    .catch(function(err){
+      /* Al abrir el archivo con doble clic (file://), el navegador bloquea la
+         lectura de datos.json por seguridad. Conviene explicarlo, porque el
+         error tecnico por si solo no dice nada util. */
+      var esArchivoLocal = location.protocol === 'file:';
+      var mensaje = esArchivoLocal
+        ? '<b>Este tablero necesita abrirse desde una direccion web.</b>' +
+          '<br><br>Estas viendolo como archivo local, y por seguridad el navegador no permite ' +
+          'que lea <code>datos.json</code> de esta forma.' +
+          '<br><br>Abrelo desde el enlace publicado (GitHub Pages) y funcionara con normalidad.'
+        : '<b>No se pudieron cargar los datos.</b><br>' + String(err.message || err) +
+          '<br><br>Verifica que el archivo <code>datos.json</code> este subido junto a esta pagina, ' +
+          'con ese nombre exacto.';
+      aviso.innerHTML = '<div class="carga-error">' + mensaje + '</div>';
+    });
+})();
+</script>
+</body>
+</html>
