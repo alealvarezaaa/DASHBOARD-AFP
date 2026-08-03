@@ -52,7 +52,10 @@ jobs:
 
       - name: Publicar si hubo cambios
         run: |
-          if [ -z "$(git status --porcelain)" ]; then
+          # Solo interesan estos dos archivos. Se revisan explicitamente porque
+          # Python deja carpetas temporales (__pycache__) que no deben publicarse
+          # ni contarse como "hubo cambios".
+          if git diff --quiet -- index.html historial_portafolio.json; then
             echo "Sin cambios: no hay corte nuevo que publicar."
             exit 0
           fi
