@@ -1,12 +1,12 @@
 name: Actualizar dashboard AFP
 
 on:
-  # Revisa automaticamente los dias 10, 17 y 24 de cada mes a las 9am (hora Colombia).
-  # Se revisa varias veces porque no siempre se sabe el dia exacto en que la
-  # Superintendencia publica el corte: si aun no esta, el proceso no hace nada
-  # y vuelve a intentar en la siguiente fecha.
+  # Revisa todos los dias a las 8am (hora Colombia). Si no hay corte nuevo,
+  # la ejecucion tarda ~20 segundos y no hace nada, asi que revisar a diario
+  # no tiene costo: simplemente el dashboard se actualiza solo al dia siguiente
+  # de que la Superintendencia publique.
   schedule:
-    - cron: '0 14 10,17,24 * *'
+    - cron: '0 13 * * *'
 
   # Permite ejecutarlo a mano desde la pestana Actions cuando se necesite.
   workflow_dispatch:
