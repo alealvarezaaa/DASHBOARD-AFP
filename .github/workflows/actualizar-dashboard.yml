@@ -1,0 +1,65 @@
+name: Actualizar dashboard AFP
+
+on:
+  # Revisa automaticamente los dias 10, 17 y 24 de cada mes a las 9am (hora Colombia).
+  # Se revisa varias veces porque no siempre se sabe el dia exacto en que la
+  # Superintendencia publica el corte: si aun no esta, el proceso no hace nada
+  # y vuelve a intentar en la siguiente fecha.
+  schedule:
+    - cron: '0 14 10,17,24 * *'
+
+  # Permite ejecutarlo a mano desde la pestana Actions cuando se necesite.
+  workflow_dispatch:
+    inputs:
+      fecha:
+        description: 'Corte especifico a procesar (YYYY-MM-DD). Vacio = el mas reciente'
+        required: false
+      forzar:
+        description: 'Reprocesar aunque el corte ya exista'
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+jobs:
+  actualizar:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Descargar el repositorio
+        uses: actions/checkout@v4
+
+      - name: Preparar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Instalar dependencias
+        run: pip install pandas
+
+      - name: Buscar y procesar corte nuevo
+        id: procesar
+        run: |
+          ARGS=""
+          if [ -n "${{ github.event.inputs.fecha }}" ]; then
+            ARGS="$ARGS --fecha ${{ github.event.inputs.fecha }}"
+          fi
+          if [ "${{ github.event.inputs.forzar }}" = "true" ]; then
+            ARGS="$ARGS --forzar"
+          fi
+          python actualizar_dashboard.py $ARGS
+
+      - name: Publicar si hubo cambios
+        run: |
+          if [ -z "$(git status --porcelain)" ]; then
+            echo "Sin cambios: no hay corte nuevo que publicar."
+            exit 0
+          fi
+
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add index.html historial_portafolio.json
+          git commit -m "Actualizacion automatica del dashboard"
+          git push
+          echo "Dashboard actualizado y publicado."
