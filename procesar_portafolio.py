@@ -374,13 +374,16 @@ def construir_detalle_acciones(df_raw: pd.DataFrame) -> list:
     return agg.sort_values("valor_mercado", ascending=False).to_dict(orient="records")
 
 
-def procesar(path_excel: str) -> dict:
-    cols = [
-        "Nombre de Entidad", "Fecha de Corte", "Código Tipo Patrimonio",
-        "Código Patrimonio", "Clase de Inversión",
-        "Vr. mercado o Vr presente en $",
-        "No. ID Emisor", "Razon Social Emisor", "No. Acciones", "Nemotecnico",
-    ]
+COLUMNAS_REQUERIDAS = [
+    "Nombre de Entidad", "Fecha de Corte", "Código Tipo Patrimonio",
+    "Código Patrimonio", "Clase de Inversión",
+    "Vr. mercado o Vr presente en $",
+    "No. ID Emisor", "Razon Social Emisor", "No. Acciones", "Nemotecnico",
+]
+
+
+def leer_excel(path_excel: str) -> pd.DataFrame:
+    """Lee el Formato 351 desde el Excel mensual de la Superintendencia."""
     print(f"Leyendo {path_excel} ...")
     engine = "xlrd" if str(path_excel).lower().endswith(".xls") else "openpyxl"
     hojas_candidatas = ["Formato_351", "Fmto-351", "Fmto_351", "FORMATO_351"]
@@ -388,7 +391,25 @@ def procesar(path_excel: str) -> dict:
     hoja = next((h for h in hojas_candidatas if h in hojas_disponibles), None)
     if hoja is None:
         raise ValueError(f"No se encontró la hoja del Formato 351 en {path_excel}. Hojas disponibles: {hojas_disponibles}")
-    df = pd.read_excel(path_excel, engine=engine, sheet_name=hoja, usecols=cols)
+    return pd.read_excel(path_excel, engine=engine, sheet_name=hoja, usecols=COLUMNAS_REQUERIDAS)
+
+
+def procesar(path_excel: str) -> dict:
+    """Procesa un corte a partir del archivo Excel (uso manual)."""
+    return procesar_dataframe(leer_excel(path_excel))
+
+
+def procesar_dataframe(df: pd.DataFrame) -> dict:
+    """
+    Procesa un corte ya cargado en memoria. Sirve tanto para el Excel como para
+    los datos que llegan de la API de datos.gov.co: lo importante es que traiga
+    las COLUMNAS_REQUERIDAS con esos nombres.
+    """
+    faltantes = [c for c in COLUMNAS_REQUERIDAS if c not in df.columns]
+    if faltantes:
+        raise ValueError(f"Faltan columnas requeridas: {faltantes}")
+
+    df = df.copy()
     df["Vr. mercado o Vr presente en $"] = df["Vr. mercado o Vr presente en $"].fillna(0)
 
     df["afp"] = df["Nombre de Entidad"].apply(normalizar_afp)
