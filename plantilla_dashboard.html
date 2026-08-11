@@ -667,6 +667,56 @@
   <section class="section">
     <div class="section-head">
       <div>
+        <h2>Actividad en ETFs internacionales</h2>
+        <p>Qué tan activa es cada AFP operando ETFs de índice: cuánto mueve, cuánto pesa en el mercado y qué proporción de su portafolio rota.</p>
+      </div>
+      <div class="moneda-toggle" id="etf-moneda-toggle">
+        <button type="button" class="moneda-btn" data-moneda="COP">COP</button>
+        <button type="button" class="moneda-btn activo" data-moneda="USD">USD</button>
+      </div>
+    </div>
+    <div class="card">
+      <div class="filter-row">
+        <label for="select-etf-periodo">Periodo</label>
+        <select id="select-etf-periodo">
+          <option value="1">Último mes</option>
+          <option value="3">Últimos 3 meses</option>
+          <option value="6">Últimos 6 meses</option>
+          <option value="12" selected>Últimos 12 meses</option>
+          <option value="24">Últimos 24 meses</option>
+        </select>
+      </div>
+      <div id="resumen-etf" class="filter-summary"></div>
+      <div style="overflow-x:auto;">
+        <table id="tabla-etf">
+          <thead>
+            <tr>
+              <th>AFP</th>
+              <th>Volumen operado</th>
+              <th>% del mercado</th>
+              <th>Saldo en ETFs</th>
+              <th>Rotación mensual</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+      <div class="empty-state" style="margin-top:10px;">
+        <b>Volumen operado</b> = compras + ventas. Mide la actividad real: comprar 100 y vender 80
+        deja un neto de 20, pero se movieron 180. &nbsp;·&nbsp;
+        <b>Rotación</b> = volumen del mes ÷ saldo del portafolio. Muestra qué proporción de lo que
+        tiene mueve cada AFP, independiente de su tamaño.
+      </div>
+    </div>
+    <div class="card" style="margin-top:16px;">
+      <div class="chart-title">Volumen operado mes a mes</div>
+      <div class="line-chart-wrap" id="chart-etf-volumen"></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-head">
+      <div>
         <h2>Matriz de movimiento neto</h2>
         <p>Compara todas las AFP a la vez: cada fila es una AFP, cada columna una acción. El número es el cambio neto en cantidad de acciones durante el horizonte elegido.</p>
       </div>
@@ -796,7 +846,7 @@ function fechaLarga(fechaISO){
    USD del dashboard: se usa la TRM de cierre del corte más reciente para todo
    el histórico, así todo queda en la misma base de conversión actual.
    Se actualiza este único valor cada vez que se agrega un mes nuevo. */
-const TRM = 3443.59;
+const TRM = 3132.42;
 const TRM_FECHA = 'cierre de ' + fechaLarga(HISTORIAL.snapshots[HISTORIAL.snapshots.length-1].fecha_corte);
 const fmtUSD = v => 'US$' + Math.round(v/TRM).toLocaleString('en-US');
 const fmtBillonesUSD = v => (v/TRM/1e9).toLocaleString('en-US',{maximumFractionDigits:1,minimumFractionDigits:1});
@@ -2084,6 +2134,183 @@ wrapMesEspecifico.style.display = 'none';
 wrapRango.style.display = 'none';
 renderMatriz();
 
+/* ===================== ACTIVIDAD EN ETFs INTERNACIONALES ===================== */
+/* Todo se deriva de los datos que ya tiene el dashboard: se filtran los
+   instrumentos de categoria "Fondo / ETF índice" (clase FINDI del Formato 351)
+   y se compara mes contra mes.
+
+   El volumen se calcula por CAMBIO EN UNIDADES x precio del mes, no por cambio
+   en valor: el valor tambien se mueve por precio, y eso no es una operacion. */
+const CAT_ETF = 'Fondo / ETF índice';
+
+let monedaEtf = 'USD';
+function fmtEtf(v){ return monedaEtf === 'USD' ? fmtUSD(v) : fmtCOP(v); }
+
+/* posiciones de ETFs de un corte: clave "afp|instrumento" -> unidades y valor */
+function posicionesEtf(snap){
+  const m = {};
+  (snap.detalle_acciones || []).forEach(function(r){
+    if(r.categoria_fina !== CAT_ETF) return;
+    const k = r.afp + '|' + (r.agrupador || r.nemotecnico);
+    if(!m[k]) m[k] = { afp: r.afp, acciones: 0, valor: 0 };
+    m[k].acciones += r.no_acciones;
+    m[k].valor += r.valor_mercado;
+  });
+  return m;
+}
+
+/* volumen y saldo de ETFs por AFP entre dos cortes consecutivos */
+function actividadEtfMes(snapPrevio, snapActual){
+  const p = posicionesEtf(snapPrevio), a = posicionesEtf(snapActual);
+  const res = {};
+  todasAfps.forEach(function(afp){ res[afp] = { volumen: 0, saldo: 0 }; });
+
+  Object.keys(a).forEach(function(k){
+    const afp = a[k].afp;
+    if(res[afp]) res[afp].saldo += a[k].valor;
+  });
+
+  const claves = {};
+  Object.keys(p).forEach(function(k){ claves[k] = true; });
+  Object.keys(a).forEach(function(k){ claves[k] = true; });
+
+  Object.keys(claves).forEach(function(k){
+    const antes = p[k] || { acciones: 0, valor: 0 };
+    const ahora = a[k] || { acciones: 0, valor: 0 };
+    const afp = (a[k] || p[k]).afp;
+    if(!res[afp]) return;
+    // precio del mes actual; si la posicion se cerro, se usa el del mes previo
+    let precio = 0;
+    if(ahora.acciones > 0) precio = ahora.valor / ahora.acciones;
+    else if(antes.acciones > 0) precio = antes.valor / antes.acciones;
+    res[afp].volumen += Math.abs(ahora.acciones - antes.acciones) * precio;
+  });
+  return res;
+}
+
+/* serie de actividad para los ultimos N meses */
+function serieEtf(nMeses){
+  const desde = Math.max(1, snapshots.length - nMeses);
+  const serie = [];
+  for(let i = desde; i < snapshots.length; i++){
+    serie.push({ mes: snapshots[i].fecha_corte, datos: actividadEtfMes(snapshots[i-1], snapshots[i]) });
+  }
+  return serie;
+}
+
+const selEtfPeriodo = document.getElementById('select-etf-periodo');
+
+function renderEtf(){
+  const n = parseInt(selEtfPeriodo.value, 10);
+  const serie = serieEtf(n);
+  if(serie.length === 0) return;
+
+  // acumulados del periodo por AFP
+  const acum = {};
+  todasAfps.forEach(function(afp){ acum[afp] = { volumen: 0, rot: 0, meses: 0 }; });
+  serie.forEach(function(punto){
+    todasAfps.forEach(function(afp){
+      const d = punto.datos[afp];
+      if(!d) return;
+      acum[afp].volumen += d.volumen;
+      if(d.saldo > 0){ acum[afp].rot += d.volumen / d.saldo; acum[afp].meses++; }
+    });
+  });
+  const saldoFinal = serie[serie.length-1].datos;
+  const volTotal = todasAfps.reduce(function(s,a){ return s + acum[a].volumen; }, 0);
+
+  const etiqueta = n === 1 ? 'el último mes' : 'los últimos ' + n + ' meses';
+  document.getElementById('resumen-etf').innerHTML =
+    'En ' + etiqueta + ' las AFP movieron <b>' + fmtEtf(volTotal) + '</b> en ETFs internacionales' +
+    ' &nbsp;·&nbsp; corte ' + serie[serie.length-1].mes;
+
+  const filas = todasAfps.slice().sort(function(a,b){ return acum[b].volumen - acum[a].volumen; });
+  document.querySelector('#tabla-etf tbody').innerHTML = filas.map(function(afp){
+    const vol = acum[afp].volumen;
+    const pct = volTotal > 0 ? vol / volTotal * 100 : 0;
+    const saldo = saldoFinal[afp] ? saldoFinal[afp].saldo : 0;
+    const rot = acum[afp].meses > 0 ? acum[afp].rot / acum[afp].meses * 100 : 0;
+    return '<tr>'+
+      '<td>'+afp+'</td>'+
+      '<td class="num">'+fmtEtf(vol)+'</td>'+
+      '<td class="num"><b>'+fmtPct(pct)+'</b></td>'+
+      '<td class="num">'+fmtEtf(saldo)+'</td>'+
+      '<td class="num" style="color:'+COLOR_AFP[afp]+';font-weight:600;">'+fmtPct(rot)+'</td>'+
+    '</tr>';
+  }).join('');
+
+  /* ---- grafica: barras agrupadas de volumen por mes ---- */
+  const cont = document.getElementById('chart-etf-volumen');
+  cont.style.paddingBottom = '16px';
+  const nM = serie.length, nA = todasAfps.length;
+  const anchoGrupo = Math.max(26, nA * 11 + 10);
+  const w = Math.max(560, nM * anchoGrupo + 80);
+  const h = 230, padL = 72, padR = 16, padT = 16, padB = 34;
+  const plotW = w - padL - padR, plotH = h - padT - padB;
+
+  let maxV = 0;
+  serie.forEach(function(p){ todasAfps.forEach(function(a){
+    if(p.datos[a] && p.datos[a].volumen > maxV) maxV = p.datos[a].volumen; }); });
+  if(maxV <= 0) maxV = 1;
+  maxV *= 1.1;
+
+  const groupW = plotW / nM;
+  const barW = Math.min(13, (groupW * 0.78) / nA);
+
+  let barras = '';
+  serie.forEach(function(p, i){
+    const gx = padL + i * groupW + groupW/2;
+    const ini = gx - (barW * nA)/2;
+    todasAfps.forEach(function(afp, j){
+      const v = p.datos[afp] ? p.datos[afp].volumen : 0;
+      const alto = (v / maxV) * plotH;
+      const y0 = padT + plotH - alto;
+      barras += '<rect x="'+(ini + j*barW).toFixed(1)+'" y="'+y0.toFixed(1)+'" '+
+        'width="'+(barW*0.86).toFixed(1)+'" height="'+Math.max(alto,0.5).toFixed(1)+'" '+
+        'fill="'+COLOR_AFP[afp]+'" opacity="0.9" rx="1">'+
+        '<title>'+afp+' · '+p.mes+': '+fmtEtf(v)+'</title></rect>';
+    });
+  });
+
+  const paso = Math.max(1, Math.ceil(nM / 14));
+  const etiquetas = serie.map(function(p, i){
+    if(i % paso !== 0 && i !== nM-1) return '';
+    const gx = padL + i * groupW + groupW/2;
+    return '<text x="'+gx.toFixed(1)+'" y="'+(h-14)+'" text-anchor="middle" '+
+      'font-family="Trebuchet MS, sans-serif" font-size="8.5" fill="#6E6E67">'+fechaCorta(p.mes)+'</text>';
+  }).join('');
+
+  const guias = [0, 0.5, 1].map(function(f){
+    const yy = padT + plotH * f;
+    const val = fmtEtf(maxV * (1-f));
+    return '<line x1="'+padL+'" y1="'+yy+'" x2="'+(w-padR)+'" y2="'+yy+'" stroke="#BFBFBB" stroke-width="1"/>'+
+      '<text x="'+(padL-8)+'" y="'+(yy+3)+'" text-anchor="end" '+
+      'font-family="Trebuchet MS, sans-serif" font-size="8.5" fill="#6E6E67">'+val+'</text>';
+  }).join('');
+
+  cont.innerHTML = '<div style="overflow-x:auto;padding-bottom:14px;">'+
+      '<svg width="'+w+'" height="'+h+'" viewBox="0 0 '+w+' '+h+'">'+guias+barras+etiquetas+'</svg>'+
+    '</div>'+
+    '<div class="line-chart-legend">'+
+      todasAfps.map(function(afp){
+        return '<span><i class="swatch" style="width:10px;height:10px;border-radius:2px;'+
+          'display:inline-block;background:'+COLOR_AFP[afp]+'"></i>'+afp+'</span>';
+      }).join('')+
+    '</div>';
+}
+
+selEtfPeriodo.addEventListener('change', renderEtf);
+document.querySelectorAll('#etf-moneda-toggle .moneda-btn').forEach(function(btn){
+  btn.addEventListener('click', function(){
+    monedaEtf = btn.dataset.moneda;
+    document.querySelectorAll('#etf-moneda-toggle .moneda-btn').forEach(function(b){
+      b.classList.toggle('activo', b === btn);
+    });
+    renderEtf();
+  });
+});
+renderEtf();
+
 /* ===================== BOTONES DE DESCARGA EN CADA TABLA ===================== */
 [
   ['tabla-rv-local',        'tenencias_renta_variable_local', {}],
@@ -2092,6 +2319,7 @@ renderMatriz();
   ['tabla-mov-serie',       'movimiento_mensual_por_accion', {}],
   ['tabla-top-compras',     'top_compras_del_mes', {slotId: 'btn-excel-compras-slot'}],
   ['tabla-top-ventas',      'top_ventas_del_mes', {slotId: 'btn-excel-ventas-slot'}],
+  ['tabla-etf',             'actividad_etfs_internacionales', {}],
   ['tabla-matriz',          'matriz_movimiento_neto', {}],
 ].forEach(function(cfg){ agregarBotonExcel(cfg[0], cfg[1], cfg[2]); });
 
@@ -2106,7 +2334,16 @@ renderMatriz();
     var aviso = document.getElementById('estado-carga');
     var contenido = document.getElementById('dashboard-contenido');
     try {
-      if(typeof HISTORIAL === 'undefined') throw new Error('No se encontraron los datos del portafolio.');
+      if(typeof HISTORIAL === 'undefined'){
+        /* Pasa cuando se abre plantilla_dashboard.html directamente: ahí los datos
+           todavía son un marcador de texto, no el histórico real. */
+        aviso.innerHTML = '<div class="carga-error">' +
+          '<b>Este archivo es la plantilla, no el tablero.</b><br><br>' +
+          'La plantilla es el molde que usa el proceso automático para generar el ' +
+          'dashboard cada mes; por sí sola no contiene datos.<br><br>' +
+          'Abre <b>index.html</b> en su lugar.</div>';
+        return;
+      }
       iniciarDashboard(HISTORIAL);
       aviso.style.display = 'none';
       contenido.style.display = '';

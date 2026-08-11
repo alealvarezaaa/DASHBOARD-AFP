@@ -2334,7 +2334,16 @@ renderEtf();
     var aviso = document.getElementById('estado-carga');
     var contenido = document.getElementById('dashboard-contenido');
     try {
-      if(typeof HISTORIAL === 'undefined') throw new Error('No se encontraron los datos del portafolio.');
+      if(typeof HISTORIAL === 'undefined'){
+        /* Pasa cuando se abre plantilla_dashboard.html directamente: ahí los datos
+           todavía son un marcador de texto, no el histórico real. */
+        aviso.innerHTML = '<div class="carga-error">' +
+          '<b>Este archivo es la plantilla, no el tablero.</b><br><br>' +
+          'La plantilla es el molde que usa el proceso automático para generar el ' +
+          'dashboard cada mes; por sí sola no contiene datos.<br><br>' +
+          'Abre <b>index.html</b> en su lugar.</div>';
+        return;
+      }
       iniciarDashboard(HISTORIAL);
       aviso.style.display = 'none';
       contenido.style.display = '';
