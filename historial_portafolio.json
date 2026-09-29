@@ -189061,6 +189061,1362 @@
           "colcap": false
         }
       ]
+    },
+    {
+      "fecha_corte": "2026-07-31",
+      "detalle_por_fondo": [
+        {
+          "afp": "Colfondos",
+          "perfil": "Cesantías",
+          "total_portafolio": 2222650249747.38,
+          "acciones_locales": 326818332571.08,
+          "acciones_internacionales": 467885270311.63
+        },
+        {
+          "afp": "Colfondos",
+          "perfil": "Conservador",
+          "total_portafolio": 7187410572322.68,
+          "acciones_locales": 479943514814.8,
+          "acciones_internacionales": 747609098881.04
+        },
+        {
+          "afp": "Colfondos",
+          "perfil": "Mayor Riesgo",
+          "total_portafolio": 20531733786793.48,
+          "acciones_locales": 2437211016630.0,
+          "acciones_internacionales": 8406181732795.46
+        },
+        {
+          "afp": "Colfondos",
+          "perfil": "Moderado",
+          "total_portafolio": 34892374594116.29,
+          "acciones_locales": 4014498733107.8,
+          "acciones_internacionales": 9464884152343.57
+        },
+        {
+          "afp": "Colfondos",
+          "perfil": "Retiro Programado",
+          "total_portafolio": 6576631240710.38,
+          "acciones_locales": 303620028298.0,
+          "acciones_internacionales": 608038420139.93
+        },
+        {
+          "afp": "Porvenir",
+          "perfil": "Cesantías",
+          "total_portafolio": 10993771160828.82,
+          "acciones_locales": 1917437556682.03,
+          "acciones_internacionales": 2404084440863.13
+        },
+        {
+          "afp": "Porvenir",
+          "perfil": "Conservador",
+          "total_portafolio": 25119091622049.12,
+          "acciones_locales": 1558370294083.66,
+          "acciones_internacionales": 2601161213369.28
+        },
+        {
+          "afp": "Porvenir",
+          "perfil": "Mayor Riesgo",
+          "total_portafolio": 87526683897261.88,
+          "acciones_locales": 10711454320468.64,
+          "acciones_internacionales": 38404451095195.48
+        },
+        {
+          "afp": "Porvenir",
+          "perfil": "Moderado",
+          "total_portafolio": 134410455658527.67,
+          "acciones_locales": 16009577551212.65,
+          "acciones_internacionales": 42591539063945.52
+        },
+        {
+          "afp": "Porvenir",
+          "perfil": "Retiro Programado",
+          "total_portafolio": 21033454284745.81,
+          "acciones_locales": 824463483678.53,
+          "acciones_internacionales": 1861156021825.5
+        },
+        {
+          "afp": "Protección",
+          "perfil": "Cesantías",
+          "total_portafolio": 8659303640452.77,
+          "acciones_locales": 1209365455378.3,
+          "acciones_internacionales": 1909160320637.6
+        },
+        {
+          "afp": "Protección",
+          "perfil": "Conservador",
+          "total_portafolio": 15811810360057.46,
+          "acciones_locales": 776029233664.99,
+          "acciones_internacionales": 1676144966183.48
+        },
+        {
+          "afp": "Protección",
+          "perfil": "Mayor Riesgo",
+          "total_portafolio": 56810707926100.12,
+          "acciones_locales": 6481619650982.17,
+          "acciones_internacionales": 25052471353131.59
+        },
+        {
+          "afp": "Protección",
+          "perfil": "Moderado",
+          "total_portafolio": 97950994877911.33,
+          "acciones_locales": 11534458441098.58,
+          "acciones_internacionales": 29179290965837.01
+        },
+        {
+          "afp": "Protección",
+          "perfil": "Retiro Programado",
+          "total_portafolio": 21286231094441.49,
+          "acciones_locales": 840657256667.5,
+          "acciones_internacionales": 2090426352034.68
+        },
+        {
+          "afp": "Skandia",
+          "perfil": "Alternativo",
+          "total_portafolio": 430210242925.74,
+          "acciones_locales": 45240205115.0,
+          "acciones_internacionales": 133556446782.87
+        },
+        {
+          "afp": "Skandia",
+          "perfil": "Cesantías",
+          "total_portafolio": 560723184345.58,
+          "acciones_locales": 87610974362.0,
+          "acciones_internacionales": 120718951920.36
+        },
+        {
+          "afp": "Skandia",
+          "perfil": "Conservador",
+          "total_portafolio": 2540905774770.82,
+          "acciones_locales": 173775237322.0,
+          "acciones_internacionales": 271428213830.83
+        },
+        {
+          "afp": "Skandia",
+          "perfil": "Mayor Riesgo",
+          "total_portafolio": 7460306952765.95,
+          "acciones_locales": 844214135356.0,
+          "acciones_internacionales": 3035274419438.74
+        },
+        {
+          "afp": "Skandia",
+          "perfil": "Moderado",
+          "total_portafolio": 12555973606993.05,
+          "acciones_locales": 1375759216412.72,
+          "acciones_internacionales": 3446270987480.88
+        },
+        {
+          "afp": "Skandia",
+          "perfil": "Retiro Programado",
+          "total_portafolio": 4772559258917.7,
+          "acciones_locales": 195060486593.0,
+          "acciones_internacionales": 462810680832.72
+        }
+      ],
+      "resumen_por_afp": [
+        {
+          "afp": "Colfondos",
+          "total_portafolio": 71410800443690.2,
+          "acciones_locales": 7562091625421.68,
+          "acciones_internacionales": 19694598674471.63
+        },
+        {
+          "afp": "Porvenir",
+          "total_portafolio": 279083456623413.28,
+          "acciones_locales": 31021303206125.51,
+          "acciones_internacionales": 87862391835198.9
+        },
+        {
+          "afp": "Protección",
+          "total_portafolio": 200519047898963.2,
+          "acciones_locales": 20842130037791.54,
+          "acciones_internacionales": 59907493957824.36
+        },
+        {
+          "afp": "Skandia",
+          "total_portafolio": 28320679020718.84,
+          "acciones_locales": 2721660255160.7197,
+          "acciones_internacionales": 7470059700286.4
+        }
+      ],
+      "total_sistema": {
+        "total_portafolio": 579333983986785.5,
+        "acciones_locales": 62147185124499.46,
+        "acciones_internacionales": 174934544167781.3
+      },
+      "composicion_general": {
+        "renta_fija": 242672484204439.12,
+        "renta_variable": 237081729292280.75,
+        "otros_activos": 99579770490065.62
+      },
+      "detalle_acciones": [
+        {
+          "afp": "Porvenir",
+          "nemotecnico": "N/A",
+          "nombre": "SPDR PORTFOLIO SYP500 ETF",
+          "categoria_amplia": "Renta variable internacional",
+          "categoria_fina": "Fondo / ETF índice",
+          "no_acciones": 367279640.0,
+          "valor_mercado": 79704884133977.97,
+          "sector": "Fondos diversificados / geográficos",
+          "colcap": false
+        },
+        {
+          "afp": "Protección",
+          "nemotecnico": "N/A",
+          "nombre": "SPDR PORTFOLIO SYP500 ETF",
+          "categoria_amplia": "Renta variable internacional",
+          "categoria_fina": "Fondo / ETF índice",
+          "no_acciones": 248389268.0,
+          "valor_mercado": 51822298778721.19,
+          "sector": "Fondos diversificados / geográficos",
+          "colcap": false
+        },
+        {
+          "afp": "Colfondos",
+          "nemotecnico": "N/A",
+          "nombre": "SPDR PORTFOLIO SYP500 ETF",
+          "categoria_amplia": "Renta variable internacional",
+          "categoria_fina": "Fondo / ETF índice",
+          "no_acciones": 46513886.0,
+          "valor_mercado": 14807560264389.15,
+          "sector": "Fondos diversificados / geográficos",
+          "colcap": false
+        },
+        {
+          "afp": "Protección",
+          "nemotecnico": "N/A",
+          "nombre": "SPDR PORTFOLIO SYP500 ETF",
+          "categoria_amplia": "Renta variable internacional",
+          "categoria_fina": "Fondo internacional (acciones)",
+          "no_acciones": 184600382.0,
+          "valor_mercado": 8078997485346.23,
+          "sector": "Fondos diversificados / geográficos",
+          "colcap": false
+        },
+        {
+          "afp": "Porvenir",
+          "nemotecnico": "N/A",
+          "nombre": "SPDR PORTFOLIO SYP500 ETF",
+          "categoria_amplia": "Renta variable internacional",
+          "categoria_fina": "Fondo internacional (acciones)",
+          "no_acciones": 29991956.0,
+          "valor_mercado": 6304165851973.24,
+          "sector": "Fondos diversificados / geográficos",
+          "colcap": false
+        },
+        {
+          "afp": "Skandia",
+          "nemotecnico": "N/A",
+          "nombre": "SPDR PORTFOLIO SYP500 ETF",
+          "categoria_amplia": "Renta variable internacional",
+          "categoria_fina": "Fondo / ETF índice",
+          "no_acciones": 26508406.0,
+          "valor_mercado": 5876438228079.38,
+          "sector": "Fondos diversificados / geográficos",
+          "colcap": false
+        },
+        {
+          "afp": "Porvenir",
+          "nemotecnico": "ICOLCAP",
+          "nombre": "FONDO BURSATIL ISHARES COLCAP",
+          "categoria_amplia": "Renta variable local",
+          "categoria_fina": "Acción local",
+          "no_acciones": 219043341.0,
+          "valor_mercado": 5147080426818.0,
+          "sector": "Otro / sin clasificar",
+          "colcap": false
+        },
+        {
+          "afp": "Colfondos",
+          "nemotecnico": "N/A",
+          "nombre": "SPDR PORTFOLIO SYP500 ETF",
+          "categoria_amplia": "Renta variable internacional",
+          "categoria_fina": "Fondo internacional (acciones)",
+          "no_acciones": 36899443.53,
+          "valor_mercado": 4887038410082.47,
+          "sector": "Fondos diversificados / geográficos",
+          "colcap": false
+        },
+        {
+          "afp": "Porvenir",
+          "nemotecnico": "CIBEST",
+          "nombre": "GRUPO CIBEST S.A.",
+          "categoria_amplia": "Renta variable local",
+          "categoria_fina": "Acción local",
+          "no_acciones": 53904192.0,
+          "valor_mercado": 4820112848640.0,
+          "sector": "Servicios Financieros",
+          "colcap": true
+        },
+        {
+          "afp": "Protección",
+          "nemotecnico": "CIBEST",
+          "nombre": "GRUPO CIBEST S.A.",
+          "categoria_amplia": "Renta variable local",
+          "categoria_fina": "Acción local",
+          "no_acciones": 41198498.0,
+          "valor_mercado": 3683969691160.0,
+          "sector": "Servicios Financieros",
+          "colcap": true
+        },
+        {
+          "afp": "Porvenir",
+          "nemotecnico": "PFCIBEST",
+          "nombre": "GRUPO CIBEST S A",
+          "categoria_amplia": "Renta variable local",
+          "categoria_fina": "Acción local",
+          "no_acciones": 47770618.0,
+          "valor_mercado": 3558911041000.0,
+          "sector": "Servicios Financieros",
+          "colcap": true
+        },
+        {
+          "afp": "Porvenir",
+          "nemotecnico": "ISA",
+          "nombre": "INTERCONEXION ELECTRICA SA ESP",
+          "categoria_amplia": "Renta variable local",
+          "categoria_fina": "Acción local",
+          "no_acciones": 110856252.0,
+          "valor_mercado": 3314601934800.0,
+          "sector": "Servicios Públicos",
+          "colcap": true
+        },
+        {
+          "afp": "Protección",
+          "nemotecnico": "PFCIBEST",
+          "nombre": "GRUPO CIBEST S A",
+          "categoria_amplia": "Renta variable local",
+          "categoria_fina": "Acción local",
+          "no_acciones": 44360886.0,
+          "valor_mercado": 3304886007000.0,
+          "sector": "Servicios Financieros",
+          "colcap": true
+        },
+        {
+          "afp": "Protección",
+          "nemotecnico": "ISA",
+          "nombre": "INTERCONEXION ELECTRICA SA ESP",
+          "categoria_amplia": "Renta variable local",
+          "categoria_fina": "Acción local",
+          "no_acciones": 86259265.0,
+          "valor_mercado": 2579152023500.0,
+          "sector": "Servicios Públicos",
+          "colcap": true
+        },
+        {
+          "afp": "Porvenir",
+          "nemotecnico": "GEB",
+          "nombre": "GRUPO ENERGIA BOGOTA S.A. E.S.P.",
+          "categoria_amplia": "Renta variable local",
+          "categoria_fina": "Acción local",
+          "no_acciones": 897347324.0,
+          "valor_mercado": 2570900083260.0,
+          "sector": "Servicios Públicos",
+          "colcap": true
+        },
+        {
+          "afp": "Protección",
+          "nemotecnico": "GEB",
+          "nombre": "GRUPO ENERGIA BOGOTA S.A. E.S.P.",
+          "categoria_amplia": "Renta variable local",
+          "categoria_fina": "Acción local",
+          "no_acciones": 724323238.0,
+          "valor_mercado": 2075186076870.0,
+          "sector": "Servicios Públicos",
+          "colcap": true
+        },
+        {
+          "afp": "Porvenir",
+          "nemotecnico": "ECOPETROL",
+          "nombre": "ECOPETROL S.A.",
+          "categoria_amplia": "Renta variable local",
+          "categoria_fina": "Acción local",
+          "no_acciones": 730441667.04,
+          "valor_mercado": 1953931459342.93,
+          "sector": "Energía y Petróleo",
+          "colcap": true
+        },
+        {
+          "afp": "Protección",
+          "nemotecnico": "ECOPETROL",
+          "nombre": "ECOPETROL S.A.",
+          "categoria_amplia": "Renta variable local",
+          "categoria_fina": "Acción local",
+          "no_acciones": 665670949.0,
+          "valor_mercado": 1780669788575.0,
+          "sector": "Energía y Petróleo",
+          "colcap": true
+        },
+        {
+          "afp": "Porvenir",
+          "nemotecnico": "UC65 LN",
+          "nombre": "UBS MSCI JAPAN UCITS",
+          "categoria_amplia": "Renta variable internacional",
+          "categoria_fina": "Fondo / ETF índice",
+          "no_acciones": 7322057.0,
+          "valor_mercado": 1757697044798.07,
+          "sector": "Fondos diversificados / geográficos",
+          "colcap": false
+        },
+        {
+          "afp": "Protección",
+          "nemotecnico": "PFGRUPSURA",
+          "nombre": "GRUPO DE INVERSIONES SURAMERICANA S.A.",
+          "categoria_amplia": "Renta variable local",
+          "categoria_fina": "Acción local",
+          "no_acciones": 36060275.0,
+          "valor_mercado": 1611894292500.0,
+          "sector": "Servicios Financieros",
+          "colcap": true
+        },
+        {
+          "afp": "Skandia",
+          "nemotecnico": "N/A",
+          "nombre": "SPDR PORTFOLIO SYP500 ETF",
+          "categoria_amplia": "Renta variable internacional",
+          "categoria_fina": "Fondo internacional (acciones)",
+          "no_acciones": 31671441.7,
+          "valor_mercado": 1560260151933.39,
+          "sector": "Fondos diversificados / geográficos",
+          "colcap": false
+        },
+        {
+          "afp": "Porvenir",
+          "nemotecnico": "CEMARGOS",
+          "nombre": "CEMENTOS ARGOS S.A.",
+          "categoria_amplia": "Renta variable local",
+          "categoria_fina": "Acción local",
+          "no_acciones": 133194023.0,
+          "valor_mercado": 1467798133460.0,
+          "sector": "Materiales",
+          "colcap": true
+        },
+        {
+          "afp": "Porvenir",
+          "nemotecnico": "HCOLSEL",
+          "nombre": "FONDO BURSATIL HORIZONS COLOMBIA SELECT DE SYP",
+          "categoria_amplia": "Renta variable local",
+          "categoria_fina": "Acción local",
+          "no_acciones": 54382456.0,
+          "valor_mercado": 1442353251014.4,
+          "sector": "Otro / sin clasificar",
+          "colcap": false
+        },
+        {
+          "afp": "Protección",
+          "nemotecnico": "CEMARGOS",
+          "nombre": "CEMENTOS ARGOS S.A.",
+          "categoria_amplia": "Renta variable local",
+          "categoria_fina": "Acción local",
+          "no_acciones": 116671677.0,
+          "valor_mercado": 1285721880540.0,
+          "sector": "Materiales",
+          "colcap": true
+        },
+        {
+          "afp": "Colfondos",
+          "nemotecnico": "PFCIBEST",
+          "nombre": "GRUPO CIBEST S A",
+          "categoria_amplia": "Renta variable local",
+          "categoria_fina": "Acción local",
+          "no_acciones": 16940561.0,
+          "valor_mercado": 1262071794500.0,
+          "sector": "Servicios Financieros",
+          "colcap": true
+        },
+        {
+          "afp": "Colfondos",
+          "nemotecnico": "CIBEST",
+          "nombre": "GRUPO CIBEST S.A.",
+          "categoria_amplia": "Renta variable local",
+          "categoria_fina": "Acción local",
+          "no_acciones": 13356242.0,
+          "valor_mercado": 1194315159640.0,
+          "sector": "Servicios Financieros",
+          "colcap": true
+        },
+        {
+          "afp": "Porvenir",
+          "nemotecnico": "PFGRUPSURA",
+          "nombre": "GRUPO DE INVERSIONES SURAMERICANA S.A.",
+          "categoria_amplia": "Renta variable local",
+          "categoria_fina": "Acción local",
+          "no_acciones": 24467940.0,
+          "valor_mercado": 1093716918006.15,
+          "sector": "Servicios Financieros",
+          "colcap": true
+        },
+        {
+          "afp": "Porvenir",
+          "nemotecnico": "PFDAVIGRP",
+          "nombre": "DAVIVIENDA GROUP S.A.",
+          "categoria_amplia": "Renta variable local",
+          "categoria_fina": "Acción local",
+          "no_acciones": 30150659.0,
+          "valor_mercado": 967836153900.0,
+          "sector": "Servicios Financieros",
+          "colcap": true
+        },
+        {
+          "afp": "Porvenir",
+          "nemotecnico": "PFAVAL",
+          "nombre": "GRUPO AVAL ACCIONES Y VALORES S.A.",
+          "categoria_amplia": "Renta variable local",
+          "categoria_fina": "Acción local",
+          "no_acciones": 1114096358.0,
+          "valor_mercado": 940297326152.0,
+          "sector": "Servicios Financieros",
+          "colcap": true
+        },
+        {
+          "afp": "Colfondos",
+          "nemotecnico": "ECOPETROL",
+          "nombre": "ECOPETROL S.A.",
+          "categoria_amplia": "Renta variable local",
+          "categoria_fina": "Acción local",
+          "no_acciones": 326245666.0,
+          "valor_mercado": 872707156550.0,
+          "sector": "Energía y Petróleo",
+          "colcap": true
+        },
+        {
+          "afp": "Protección",
+          "nemotecnico": "PFGRUPOARG",
+          "nombre": "GRUPO ARGOS S.A.",
+          "categoria_amplia": "Renta variable local",
+          "categoria_fina": "Acción local",
+          "no_acciones": 62810165.0,
+          "valor_mercado": 808994925200.0,
+          "sector": "Materiales",
+          "colcap": true
+        },
+        {
+          "afp": "Colfondos",
+          "nemotecnico": "ISA",
+          "nombre": "INTERCONEXION ELECTRICA SA ESP",
+          "categoria_amplia": "Renta variable local",
+          "categoria_fina": "Acción local",
+          "no_acciones": 26865103.0,
+          "valor_mercado": 803266579700.0,
+          "sector": "Servicios Públicos",
+          "colcap": true
+        },
+        {
+          "afp": "Porvenir",
+          "nemotecnico": "PFGRUPOARG",
+          "nombre": "GRUPO ARGOS S.A.",
+          "categoria_amplia": "Renta variable local",
+          "categoria_fina": "Acción local",
+          "no_acciones": 61485105.0,
+          "valor_mercado": 791928152374.11,
+          "sector": "Materiales",
+          "colcap": true
+        },
+        {
+          "afp": "Protección",
+          "nemotecnico": "PFDAVIGRP",
+          "nombre": "DAVIVIENDA GROUP S.A.",
+          "categoria_amplia": "Renta variable local",
+          "categoria_fina": "Acción local",
+          "no_acciones": 23891153.0,
+          "valor_mercado": 766906011300.0,
+          "sector": "Servicios Financieros",
+          "colcap": true
+        },
+        {
+          "afp": "Protección",
+          "nemotecnico": "PFAVAL",
+          "nombre": "GRUPO AVAL ACCIONES Y VALORES S.A.",
+          "categoria_amplia": "Renta variable local",
+          "categoria_fina": "Acción local",
+          "no_acciones": 854979627.0,
+          "valor_mercado": 721602805188.0,
+          "sector": "Servicios Financieros",
+          "colcap": true
+        },
+        {
+          "afp": "Colfondos",
+          "nemotecnico": "GEB",
+          "nombre": "GRUPO ENERGIA BOGOTA S.A. E.S.P.",
+          "categoria_amplia": "Renta variable local",
+          "categoria_fina": "Acción local",
+          "no_acciones": 247070891.0,
+          "valor_mercado": 707858102715.0,
+          "sector": "Servicios Públicos",
+          "colcap": true
+        },
+        {
+          "afp": "Skandia",
+          "nemotecnico": "PFCIBEST",
+          "nombre": "GRUPO CIBEST S A",
+          "categoria_amplia": "Renta variable local",
+          "categoria_fina": "Acción local",
+          "no_acciones": 9025116.0,
+          "valor_mercado": 672371142000.0,
+          "sector": "Servicios Financieros",
+          "colcap": true
+        },
+        {
+          "afp": "Porvenir",
+          "nemotecnico": "GRUPOSURA",
+          "nombre": "GRUPO DE INVERSIONES SURAMERICANA S A",
+          "categoria_amplia": "Renta variable local",
+          "categoria_fina": "Acción local",
+          "no_acciones": 12191981.0,
+          "valor_mercado": 670071275760.0,
+          "sector": "Servicios Financieros",
+          "colcap": true
+        },
+        {
+          "afp": "Porvenir",
+          "nemotecnico": "GRUPOARGOS",
+          "nombre": "GRUPO ARGOS S.A.",
+          "categoria_amplia": "Renta variable local",
+          "categoria_fina": "Acción local",
+          "no_acciones": 34669484.0,
+          "valor_mercado": 585914279600.0,
+          "sector": "Materiales",
+          "colcap": true
+        },
+        {
+          "afp": "Colfondos",
+          "nemotecnico": "PFGRUPSURA",
+          "nombre": "GRUPO DE INVERSIONES SURAMERICANA S.A.",
+          "categoria_amplia": "Renta variable local",
+          "categoria_fina": "Acción local",
+          "no_acciones": 12482435.0,
+          "valor_mercado": 557964844500.0,
+          "sector": "Servicios Financieros",
+          "colcap": true
+        },
+        {
+          "afp": "Porvenir",
+          "nemotecnico": "CELSIA",
+          "nombre": "CELSIA S.A.",
+          "categoria_amplia": "Renta variable local",
+          "categoria_fina": "Acción local",
+          "no_acciones": 108270449.0,
+          "valor_mercado": 542434949490.0,
+          "sector": "Servicios Públicos",
+          "colcap": true
+        },
+        {
+          "afp": "Protección",
+          "nemotecnico": "GRUPOSURA",
+          "nombre": "GRUPO DE INVERSIONES SURAMERICANA S A",
+          "categoria_amplia": "Renta variable local",
+          "categoria_fina": "Acción local",
+          "no_acciones": 9787019.0,
+          "valor_mercado": 537894564240.0,
+          "sector": "Servicios Financieros",
+          "colcap": true
+        },
+        {
+          "afp": "Porvenir",
+          "nemotecnico": "PEI",
+          "nombre": "FIDUCIARIA CORFICOLOMBIANA PATRIMONIOS AUTONOMOS",
+          "categoria_amplia": "Renta variable local",
+          "categoria_fina": "Acción local",
+          "no_acciones": 7927061.0,
+          "valor_mercado": 519063954280.0,
+          "sector": "Inmobiliario",
+          "colcap": true
+        },
+        {
+          "afp": "Protección",
+          "nemotecnico": "GRUPOARGOS",
+          "nombre": "GRUPO ARGOS S.A.",
+          "categoria_amplia": "Renta variable local",
+          "categoria_fina": "Acción local",
+          "no_acciones": 30567856.0,
+          "valor_mercado": 516596766400.0,
+          "sector": "Materiales",
+          "colcap": true
+        },
+        {
+          "afp": "Protección",
+          "nemotecnico": "CELSIA",
+          "nombre": "CELSIA S.A.",
+          "categoria_amplia": "Renta variable local",
+          "categoria_fina": "Acción local",
+          "no_acciones": 91102733.0,
+          "valor_mercado": 456424692330.0,
+          "sector": "Servicios Públicos",
+          "colcap": true
+        },
+        {
+          "afp": "Colfondos",
+          "nemotecnico": "CEMARGOS",
+          "nombre": "CEMENTOS ARGOS S.A.",
+          "categoria_amplia": "Renta variable local",
+          "categoria_fina": "Acción local",
+          "no_acciones": 34962661.0,
+          "valor_mercado": 385288524220.0,
+          "sector": "Materiales",
+          "colcap": true
+        },
+        {
+          "afp": "Skandia",
+          "nemotecnico": "CIBEST",
+          "nombre": "GRUPO CIBEST S.A.",
+          "categoria_amplia": "Renta variable local",
+          "categoria_fina": "Acción local",
+          "no_acciones": 4035166.0,
+          "valor_mercado": 360824543720.0,
+          "sector": "Servicios Financieros",
+          "colcap": true
+        },
+        {
+          "afp": "Skandia",
+          "nemotecnico": "ISA",
+          "nombre": "INTERCONEXION ELECTRICA SA ESP",
+          "categoria_amplia": "Renta variable local",
+          "categoria_fina": "Acción local",
+          "no_acciones": 11451600.0,
+          "valor_mercado": 342402840000.0,
+          "sector": "Servicios Públicos",
+          "colcap": true
+        },
+        {
+          "afp": "Protección",
+          "nemotecnico": "PEI",
+          "nombre": "FIDUCIARIA CORFICOLOMBIANA PATRIMONIOS AUTONOMOS",
+          "categoria_amplia": "Renta variable local",
+          "categoria_fina": "Acción local",
+          "no_acciones": 4537081.0,
+          "valor_mercado": 297088063880.0,
+          "sector": "Inmobiliario",
+          "colcap": true
+        },
+        {
+          "afp": "Colfondos",
+          "nemotecnico": "PFGRUPOARG",
+          "nombre": "GRUPO ARGOS S.A.",
+          "categoria_amplia": "Renta variable local",
+          "categoria_fina": "Acción local",
+          "no_acciones": 22351259.0,
+          "valor_mercado": 287884215920.0,
+          "sector": "Materiales",
+          "colcap": true
+        },
+        {
+          "afp": "Skandia",
+          "nemotecnico": "GEB",
+          "nombre": "GRUPO ENERGIA BOGOTA S.A. E.S.P.",
+          "categoria_amplia": "Renta variable local",
+          "categoria_fina": "Acción local",
+          "no_acciones": 97851609.0,
+          "valor_mercado": 280344859785.0,
+          "sector": "Servicios Públicos",
+          "colcap": true
+        },
+        {
+          "afp": "Porvenir",
+          "nemotecnico": "CORFICOLCF",
+          "nombre": "CORPORACION FINANCIERA COLOMBIANA S.A.",
+          "categoria_amplia": "Renta variable local",
+          "categoria_fina": "Acción local",
+          "no_acciones": 13417488.0,
+          "valor_mercado": 275058503997.88,
+          "sector": "Servicios Financieros",
+          "colcap": true
+        },
+        {
+          "afp": "Protección",
+          "nemotecnico": "CORFICOLCF",
+          "nombre": "CORPORACION FINANCIERA COLOMBIANA S.A.",
+          "categoria_amplia": "Renta variable local",
+          "categoria_fina": "Acción local",
+          "no_acciones": 12860265.0,
+          "valor_mercado": 263635432500.0,
+          "sector": "Servicios Financieros",
+          "colcap": true
+        },
+        {
+          "afp": "Colfondos",
+          "nemotecnico": "PFDAVIGRP",
+          "nombre": "DAVIVIENDA GROUP S.A.",
+          "categoria_amplia": "Renta variable local",
+          "categoria_fina": "Acción local",
+          "no_acciones": 7595531.0,
+          "valor_mercado": 243816545100.0,
+          "sector": "Servicios Financieros",
+          "colcap": true
+        },
+        {
+          "afp": "Colfondos",
+          "nemotecnico": "GRUPOSURA",
+          "nombre": "GRUPO DE INVERSIONES SURAMERICANA S A",
+          "categoria_amplia": "Renta variable local",
+          "categoria_fina": "Acción local",
+          "no_acciones": 4309671.0,
+          "valor_mercado": 236859518160.0,
+          "sector": "Servicios Financieros",
+          "colcap": true
+        },
+        {
+          "afp": "Skandia",
+          "nemotecnico": "ECOPETROL",
+          "nombre": "ECOPETROL S.A.",
+          "categoria_amplia": "Renta variable local",
+          "categoria_fina": "Acción local",
+          "no_acciones": 84325381.0,
+          "valor_mercado": 225570394175.0,
+          "sector": "Energía y Petróleo",
+          "colcap": true
+        },
+        {
+          "afp": "Skandia",
+          "nemotecnico": "PFGRUPSURA",
+          "nombre": "GRUPO DE INVERSIONES SURAMERICANA S.A.",
+          "categoria_amplia": "Renta variable local",
+          "categoria_fina": "Acción local",
+          "no_acciones": 4337454.0,
+          "valor_mercado": 193884193800.0,
+          "sector": "Servicios Financieros",
+          "colcap": true
+        },
+        {
+          "afp": "Porvenir",
+          "nemotecnico": "PROMIGAS",
+          "nombre": "PROMIGAS S.A. E.S.P.",
+          "categoria_amplia": "Renta variable local",
+          "categoria_fina": "Acción local",
+          "no_acciones": 27639379.0,
+          "valor_mercado": 183525476559.52,
+          "sector": "Servicios Públicos",
+          "colcap": true
+        },
+        {
+          "afp": "Colfondos",
+          "nemotecnico": "PFAVAL",
+          "nombre": "GRUPO AVAL ACCIONES Y VALORES S.A.",
+          "categoria_amplia": "Renta variable local",
+          "categoria_fina": "Acción local",
+          "no_acciones": 217107762.0,
+          "valor_mercado": 183238951128.0,
+          "sector": "Servicios Financieros",
+          "colcap": true
+        },
+        {
+          "afp": "Skandia",
+          "nemotecnico": "CEMARGOS",
+          "nombre": "CEMENTOS ARGOS S.A.",
+          "categoria_amplia": "Renta variable local",
+          "categoria_fina": "Acción local",
+          "no_acciones": 14011946.0,
+          "valor_mercado": 154411644920.0,
+          "sector": "Materiales",
+          "colcap": true
+        },
+        {
+          "afp": "Colfondos",
+          "nemotecnico": "GRUPOARGOS",
+          "nombre": "GRUPO ARGOS S.A.",
+          "categoria_amplia": "Renta variable local",
+          "categoria_fina": "Acción local",
+          "no_acciones": 8663121.0,
+          "valor_mercado": 146406744900.0,
+          "sector": "Materiales",
+          "colcap": true
+        },
+        {
+          "afp": "Colfondos",
+          "nemotecnico": "PEI",
+          "nombre": "FIDUCIARIA CORFICOLOMBIANA PATRIMONIOS AUTONOMOS",
+          "categoria_amplia": "Renta variable local",
+          "categoria_fina": "Acción local",
+          "no_acciones": 2058841.0,
+          "valor_mercado": 134812908680.0,
+          "sector": "Inmobiliario",
+          "colcap": true
+        },
+        {
+          "afp": "Colfondos",
+          "nemotecnico": "CELSIA",
+          "nombre": "CELSIA S.A.",
+          "categoria_amplia": "Renta variable local",
+          "categoria_fina": "Acción local",
+          "no_acciones": 26626406.0,
+          "valor_mercado": 133398294060.0,
+          "sector": "Servicios Públicos",
+          "colcap": true
+        },
+        {
+          "afp": "Colfondos",
+          "nemotecnico": "ICOLCAP",
+          "nombre": "FONDO BURSATIL ISHARES COLCAP",
+          "categoria_amplia": "Renta variable local",
+          "categoria_fina": "Acción local",
+          "no_acciones": 5638573.0,
+          "valor_mercado": 132495188354.0,
+          "sector": "Otro / sin clasificar",
+          "colcap": false
+        },
+        {
+          "afp": "Protección",
+          "nemotecnico": "PROMIGAS",
+          "nombre": "PROMIGAS S.A. E.S.P.",
+          "categoria_amplia": "Renta variable local",
+          "categoria_fina": "Acción local",
+          "no_acciones": 18464358.0,
+          "valor_mercado": 122603337120.0,
+          "sector": "Servicios Públicos",
+          "colcap": true
+        },
+        {
+          "afp": "Skandia",
+          "nemotecnico": "GRUPOSURA",
+          "nombre": "GRUPO DE INVERSIONES SURAMERICANA S A",
+          "categoria_amplia": "Renta variable local",
+          "categoria_fina": "Acción local",
+          "no_acciones": 1952093.0,
+          "valor_mercado": 107287031280.0,
+          "sector": "Servicios Financieros",
+          "colcap": true
+        },
+        {
+          "afp": "Skandia",
+          "nemotecnico": "PFGRUPOARG",
+          "nombre": "GRUPO ARGOS S.A.",
+          "categoria_amplia": "Renta variable local",
+          "categoria_fina": "Acción local",
+          "no_acciones": 8130735.0,
+          "valor_mercado": 104723866800.0,
+          "sector": "Materiales",
+          "colcap": true
+        },
+        {
+          "afp": "Porvenir",
+          "nemotecnico": "N/A",
+          "nombre": "SPDR PORTFOLIO SYP500 ETF",
+          "categoria_amplia": "Renta variable internacional",
+          "categoria_fina": "ADR",
+          "no_acciones": 328794.0,
+          "valor_mercado": 95644804449.64,
+          "sector": "Fondos diversificados / geográficos",
+          "colcap": false
+        },
+        {
+          "afp": "Colfondos",
+          "nemotecnico": "HCOLSEL",
+          "nombre": "FONDO BURSATIL HORIZONS COLOMBIA SELECT DE SYP",
+          "categoria_amplia": "Renta variable local",
+          "categoria_fina": "Acción local",
+          "no_acciones": 3485327.0,
+          "valor_mercado": 92439236824.8,
+          "sector": "Otro / sin clasificar",
+          "colcap": false
+        },
+        {
+          "afp": "Colfondos",
+          "nemotecnico": "CORFICOLCF",
+          "nombre": "CORPORACION FINANCIERA COLOMBIANA S.A.",
+          "categoria_amplia": "Renta variable local",
+          "categoria_fina": "Acción local",
+          "no_acciones": 3689960.0,
+          "valor_mercado": 75644180000.0,
+          "sector": "Servicios Financieros",
+          "colcap": true
+        },
+        {
+          "afp": "Skandia",
+          "nemotecnico": "PFDAVIGRP",
+          "nombre": "DAVIVIENDA GROUP S.A.",
+          "categoria_amplia": "Renta variable local",
+          "categoria_fina": "Acción local",
+          "no_acciones": 1914548.0,
+          "valor_mercado": 61456990800.0,
+          "sector": "Servicios Financieros",
+          "colcap": true
+        },
+        {
+          "afp": "Skandia",
+          "nemotecnico": "GRUPOARGOS",
+          "nombre": "GRUPO ARGOS S.A.",
+          "categoria_amplia": "Renta variable local",
+          "categoria_fina": "Acción local",
+          "no_acciones": 3458729.0,
+          "valor_mercado": 58452520100.0,
+          "sector": "Materiales",
+          "colcap": true
+        },
+        {
+          "afp": "Skandia",
+          "nemotecnico": "PFAVAL",
+          "nombre": "GRUPO AVAL ACCIONES Y VALORES S.A.",
+          "categoria_amplia": "Renta variable local",
+          "categoria_fina": "Acción local",
+          "no_acciones": 67307863.0,
+          "valor_mercado": 56807836372.0,
+          "sector": "Servicios Financieros",
+          "colcap": true
+        },
+        {
+          "afp": "Porvenir",
+          "nemotecnico": "TIN",
+          "nombre": "TITULARIZADORA COLOMBIANA SA HITOS",
+          "categoria_amplia": "Renta variable local",
+          "categoria_fina": "Acción local",
+          "no_acciones": 4077400.0,
+          "valor_mercado": 55044900000.0,
+          "sector": "Otro / sin clasificar",
+          "colcap": false
+        },
+        {
+          "afp": "Colfondos",
+          "nemotecnico": "PROMIGAS",
+          "nombre": "PROMIGAS S.A. E.S.P.",
+          "categoria_amplia": "Renta variable local",
+          "categoria_fina": "Acción local",
+          "no_acciones": 7070050.0,
+          "valor_mercado": 46945132000.0,
+          "sector": "Servicios Públicos",
+          "colcap": true
+        },
+        {
+          "afp": "Porvenir",
+          "nemotecnico": "PFCORFICOL",
+          "nombre": "CORPORACION FINANCIERA COLOMBIANA S.A.",
+          "categoria_amplia": "Renta variable local",
+          "categoria_fina": "Acción local",
+          "no_acciones": 2576576.0,
+          "valor_mercado": 46842151614.28,
+          "sector": "Servicios Financieros",
+          "colcap": true
+        },
+        {
+          "afp": "Colfondos",
+          "nemotecnico": "EXITO",
+          "nombre": "ALMACENES EXITO S.A.",
+          "categoria_amplia": "Renta variable local",
+          "categoria_fina": "Acción local",
+          "no_acciones": 7905109.0,
+          "valor_mercado": 37193537845.0,
+          "sector": "Consumo",
+          "colcap": true
+        },
+        {
+          "afp": "Skandia",
+          "nemotecnico": "CELSIA",
+          "nombre": "CELSIA S.A.",
+          "categoria_amplia": "Renta variable local",
+          "categoria_fina": "Acción local",
+          "no_acciones": 6706749.0,
+          "valor_mercado": 33600812490.0,
+          "sector": "Servicios Públicos",
+          "colcap": true
+        },
+        {
+          "afp": "Porvenir",
+          "nemotecnico": "BOGOTA",
+          "nombre": "BANCO DE BOGOTA S.A.",
+          "categoria_amplia": "Renta variable local",
+          "categoria_fina": "Acción local",
+          "no_acciones": 866552.0,
+          "valor_mercado": 33552893440.0,
+          "sector": "Servicios Financieros",
+          "colcap": true
+        },
+        {
+          "afp": "Skandia",
+          "nemotecnico": "N/A",
+          "nombre": "SPDR PORTFOLIO SYP500 ETF",
+          "categoria_amplia": "Renta variable internacional",
+          "categoria_fina": "ADR",
+          "no_acciones": 538463.0,
+          "valor_mercado": 31874966718.98,
+          "sector": "Fondos diversificados / geográficos",
+          "colcap": false
+        },
+        {
+          "afp": "Skandia",
+          "nemotecnico": "CORFICOLCF",
+          "nombre": "CORPORACION FINANCIERA COLOMBIANA S.A.",
+          "categoria_amplia": "Renta variable local",
+          "categoria_fina": "Acción local",
+          "no_acciones": 1113055.0,
+          "valor_mercado": 22817627500.0,
+          "sector": "Servicios Financieros",
+          "colcap": true
+        },
+        {
+          "afp": "Protección",
+          "nemotecnico": "BOGOTA",
+          "nombre": "BANCO DE BOGOTA S.A.",
+          "categoria_amplia": "Renta variable local",
+          "categoria_fina": "Acción local",
+          "no_acciones": 582036.0,
+          "valor_mercado": 22536433920.0,
+          "sector": "Servicios Financieros",
+          "colcap": true
+        },
+        {
+          "afp": "Porvenir",
+          "nemotecnico": "NUAMCO",
+          "nombre": "HOLDING BURSATIL REGIONAL SA",
+          "categoria_amplia": "Renta variable local",
+          "categoria_fina": "Acción local",
+          "no_acciones": 1028855.0,
+          "valor_mercado": 20503176768.25,
+          "sector": "Servicios Financieros",
+          "colcap": false
+        },
+        {
+          "afp": "Skandia",
+          "nemotecnico": "PROMIGAS",
+          "nombre": "PROMIGAS S.A. E.S.P.",
+          "categoria_amplia": "Renta variable local",
+          "categoria_fina": "Acción local",
+          "no_acciones": 2364403.0,
+          "valor_mercado": 15699635920.0,
+          "sector": "Servicios Públicos",
+          "colcap": true
+        },
+        {
+          "afp": "Skandia",
+          "nemotecnico": "EXITO",
+          "nombre": "ALMACENES EXITO S.A.",
+          "categoria_amplia": "Renta variable local",
+          "categoria_fina": "Acción local",
+          "no_acciones": 3186690.0,
+          "valor_mercado": 14993376450.0,
+          "sector": "Consumo",
+          "colcap": true
+        },
+        {
+          "afp": "Porvenir",
+          "nemotecnico": "POPULAR",
+          "nombre": "BANCO POPULAR S.A.",
+          "categoria_amplia": "Renta variable local",
+          "categoria_fina": "Acción local",
+          "no_acciones": 92808832.0,
+          "valor_mercado": 12497637317.12,
+          "sector": "Servicios Financieros",
+          "colcap": false
+        },
+        {
+          "afp": "Colfondos",
+          "nemotecnico": "TERPEL",
+          "nombre": "ORGANIZACION TERPEL S.A.",
+          "categoria_amplia": "Renta variable local",
+          "categoria_fina": "Acción local",
+          "no_acciones": 616496.0,
+          "valor_mercado": 10948968960.0,
+          "sector": "Consumo",
+          "colcap": true
+        },
+        {
+          "afp": "Colfondos",
+          "nemotecnico": "PFCORFICOL",
+          "nombre": "CORPORACION FINANCIERA COLOMBIANA S.A.",
+          "categoria_amplia": "Renta variable local",
+          "categoria_fina": "Acción local",
+          "no_acciones": 498231.0,
+          "valor_mercado": 9057839580.0,
+          "sector": "Servicios Financieros",
+          "colcap": true
+        },
+        {
+          "afp": "Skandia",
+          "nemotecnico": "BOGOTA",
+          "nombre": "BANCO DE BOGOTA S.A.",
+          "categoria_amplia": "Renta variable local",
+          "categoria_fina": "Acción local",
+          "no_acciones": 196877.0,
+          "valor_mercado": 7623077440.0,
+          "sector": "Servicios Financieros",
+          "colcap": true
+        },
+        {
+          "afp": "Colfondos",
+          "nemotecnico": "POPULAR",
+          "nombre": "BANCO POPULAR S.A.",
+          "categoria_amplia": "Renta variable local",
+          "categoria_fina": "Acción local",
+          "no_acciones": 51220868.0,
+          "valor_mercado": 6897402084.88,
+          "sector": "Servicios Financieros",
+          "colcap": false
+        },
+        {
+          "afp": "Porvenir",
+          "nemotecnico": "GRUPOAVAL",
+          "nombre": "GRUPO AVAL ACCIONES Y VALORES",
+          "categoria_amplia": "Renta variable local",
+          "categoria_fina": "Acción local",
+          "no_acciones": 8174157.0,
+          "valor_mercado": 6612893013.0,
+          "sector": "Servicios Financieros",
+          "colcap": false
+        },
+        {
+          "afp": "Protección",
+          "nemotecnico": "POPULAR",
+          "nombre": "BANCO POPULAR S.A.",
+          "categoria_amplia": "Renta variable local",
+          "categoria_fina": "Acción local",
+          "no_acciones": 46351960.0,
+          "valor_mercado": 6241754933.6,
+          "sector": "Servicios Financieros",
+          "colcap": false
+        },
+        {
+          "afp": "Protección",
+          "nemotecnico": "NUAM",
+          "nombre": "HOLDING BURSATIL REGIONAL SA",
+          "categoria_amplia": "Renta variable internacional",
+          "categoria_fina": "Acción internacional",
+          "no_acciones": 311002.0,
+          "valor_mercado": 6197693756.94,
+          "sector": "Servicios Financieros",
+          "colcap": false
+        },
+        {
+          "afp": "Skandia",
+          "nemotecnico": "OCCIDENTE",
+          "nombre": "BANCO DE OCCIDENTE S.A.",
+          "categoria_amplia": "Renta variable local",
+          "categoria_fina": "Acción local",
+          "no_acciones": 125696.0,
+          "valor_mercado": 2506824460.8,
+          "sector": "Servicios Financieros",
+          "colcap": false
+        },
+        {
+          "afp": "Skandia",
+          "nemotecnico": "PFCORFICOL",
+          "nombre": "CORPORACION FINANCIERA COLOMBIANA S.A.",
+          "categoria_amplia": "Renta variable local",
+          "categoria_fina": "Acción local",
+          "no_acciones": 129544.0,
+          "valor_mercado": 2355109920.0,
+          "sector": "Servicios Financieros",
+          "colcap": true
+        },
+        {
+          "afp": "Skandia",
+          "nemotecnico": "N/A",
+          "nombre": "SPDR PORTFOLIO SYP500 ETF",
+          "categoria_amplia": "Renta variable internacional",
+          "categoria_fina": "Acción internacional",
+          "no_acciones": 48589.0,
+          "valor_mercado": 1486353554.65,
+          "sector": "Fondos diversificados / geográficos",
+          "colcap": false
+        },
+        {
+          "afp": "Skandia",
+          "nemotecnico": "POPULAR",
+          "nombre": "BANCO POPULAR S.A.",
+          "categoria_amplia": "Renta variable local",
+          "categoria_fina": "Acción local",
+          "no_acciones": 9949212.0,
+          "valor_mercado": 1339760887.92,
+          "sector": "Servicios Financieros",
+          "colcap": false
+        },
+        {
+          "afp": "Skandia",
+          "nemotecnico": "GRUPOAVAL",
+          "nombre": "GRUPO AVAL ACCIONES Y VALORES",
+          "categoria_amplia": "Renta variable local",
+          "categoria_fina": "Acción local",
+          "no_acciones": 1563060.0,
+          "valor_mercado": 1264515540.0,
+          "sector": "Servicios Financieros",
+          "colcap": false
+        },
+        {
+          "afp": "Skandia",
+          "nemotecnico": "MINEROS",
+          "nombre": "MINEROS S.A.",
+          "categoria_amplia": "Renta variable local",
+          "categoria_fina": "Acción local",
+          "no_acciones": 57820.0,
+          "valor_mercado": 921650800.0,
+          "sector": "Materiales",
+          "colcap": true
+        },
+        {
+          "afp": "Colfondos",
+          "nemotecnico": "BOGOTA",
+          "nombre": "BANCO DE BOGOTA S.A.",
+          "categoria_amplia": "Renta variable local",
+          "categoria_fina": "Acción local",
+          "no_acciones": 15000.0,
+          "valor_mercado": 580800000.0,
+          "sector": "Servicios Financieros",
+          "colcap": true
+        },
+        {
+          "afp": "Porvenir",
+          "nemotecnico": "BBVACOL",
+          "nombre": "BANCO BILBAO VIZCAYA ARGENTARIA COLOMBIA SA",
+          "categoria_amplia": "Renta variable local",
+          "categoria_fina": "Acción local",
+          "no_acciones": 2783872.0,
+          "valor_mercado": 562704047.36,
+          "sector": "Servicios Financieros",
+          "colcap": false
+        },
+        {
+          "afp": "Porvenir",
+          "nemotecnico": "VILLAS",
+          "nombre": "BANCO COMERCIAL AV VILLAS SA",
+          "categoria_amplia": "Renta variable local",
+          "categoria_fina": "Acción local",
+          "no_acciones": 71287.0,
+          "valor_mercado": 150681470.51,
+          "sector": "Servicios Financieros",
+          "colcap": false
+        },
+        {
+          "afp": "Protección",
+          "nemotecnico": "BANCOLDEX",
+          "nombre": "BANCOLDEX BANCO DE COMERCIO EXTERIOR DE COLOMBIA",
+          "categoria_amplia": "Renta variable local",
+          "categoria_fina": "Acción local",
+          "no_acciones": 46793.0,
+          "valor_mercado": 62311898.45,
+          "sector": "Servicios Financieros",
+          "colcap": false
+        },
+        {
+          "afp": "Protección",
+          "nemotecnico": "PBBANCOLDE",
+          "nombre": "BANCOLDEX BANCO DE COMERCIO EXTERIOR DE COLOMBIA",
+          "categoria_amplia": "Renta variable local",
+          "categoria_fina": "Acción local",
+          "no_acciones": 28500.0,
+          "valor_mercado": 37952025.0,
+          "sector": "Servicios Financieros",
+          "colcap": false
+        },
+        {
+          "afp": "Protección",
+          "nemotecnico": "ETERCOL",
+          "nombre": "ETERNIT COLOMBIANA SA",
+          "categoria_amplia": "Renta variable local",
+          "categoria_fina": "Acción local",
+          "no_acciones": 11176.0,
+          "valor_mercado": 25226690.72,
+          "sector": "Materiales",
+          "colcap": false
+        },
+        {
+          "afp": "Protección",
+          "nemotecnico": "INTERBOLSA",
+          "nombre": "INTERBOLSA SA COMISIONISTA DE BOLSA",
+          "categoria_amplia": "Renta variable local",
+          "categoria_fina": "Acción local",
+          "no_acciones": 20763340.0,
+          "valor_mercado": 20.77,
+          "sector": "Servicios Financieros",
+          "colcap": false
+        }
+      ]
     }
   ],
   "acciones_circulacion": {
